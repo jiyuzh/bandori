@@ -1,5 +1,6 @@
 #pragma once
 
+#include "headers.h"
 #include "common.h"
 #include "kernel.h"
 
@@ -119,7 +120,7 @@ fn bool prng_seed(prng_state *state)
 			u64 val = 0x01234567ULL;
 
 			if (heap) {
-				val = *(u64 *) ((void *) heap + 3);
+				val = *(u64 *) ((char *) heap + 3);
 				free(heap);
 			}
 
