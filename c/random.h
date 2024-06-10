@@ -252,4 +252,5 @@ fn void prng_bytes(prng_state *state, u8 *buf, size_t len)
 //
 
 #define prandom_u32() prng_u32(NULL)
+#define prandom_u64() prng_u64(NULL)
 #define prandom_bytes(buf, bytes) prng_bytes(NULL, buf, bytes)

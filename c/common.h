@@ -6,6 +6,11 @@
 #define TB(x) (1024UL * GB(x))
 #define PB(x) (1024UL * TB(x))
 
+#define Thousand(x) (1000UL * (x))
+#define Million(x) (1000UL * Thousand(x))
+#define Billion(x) (1000UL * Million(x))
+#define Trillion(x) (1000UL * Billion(x))
+
 #define fn static inline
 #define let static const
 #define mut static
