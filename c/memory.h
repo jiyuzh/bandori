@@ -4,6 +4,8 @@
 #include "common.h"
 #include "kernel.h"
 #include "random.h"
+#include "interactive.h"
+#include "printer.h"
 
 //
 // Private Anon MMAP
@@ -78,6 +80,7 @@ fn void munmap_device(mmap_device_handle *handle)
 fn mmap_device_handle *mmap_device(char *dev, size_t size)
 {
 	mmap_device_handle *handle = malloc(sizeof(mmap_device_handle));
+	int ret = 0;
 
 	if (!handle)
 		return NULL;
@@ -86,6 +89,7 @@ fn mmap_device_handle *mmap_device(char *dev, size_t size)
 
 	handle->fd = open(dev, O_RDWR);
 	if (handle->fd < 0) {
+		pr("Unable to open %s, map device failed: errno %d", dev, errno);
 		munmap_device(handle);
 		return NULL;
 	}
@@ -93,8 +97,88 @@ fn mmap_device_handle *mmap_device(char *dev, size_t size)
 	handle->size = size;
 	handle->map = mmap(NULL, handle->size, PROT_READ | PROT_WRITE, MAP_SHARED_VALIDATE | MAP_SYNC, handle->fd, 0);
 	if (handle->map == MAP_FAILED) {
+		pr("Unable to mmap %s, map device failed: errno %d", dev, errno);
 		munmap_device(handle);
 		return NULL;
+	}
+
+	ret = madvise(handle->map, handle->size, MADV_HUGEPAGE);
+	if (ret) {
+		pr("Map %s (%s) cannot enable THP: errno %d", dev, format_size(handle->size), errno);
+	}
+
+	return handle;
+}
+
+//
+// Shared File MMAP
+//
+
+typedef struct mmap_file_handle {
+	int fd;
+	void *map;
+	size_t size;
+} mmap_file_handle;
+
+let mmap_file_handle default_mmap_file_handle = { 0 };
+
+fn void munmap_file(mmap_file_handle *handle)
+{
+	if (handle && (handle->map != MAP_FAILED) && handle->size) {
+		munmap(handle->map, handle->size);
+	}
+
+	if (handle && handle->fd >= 0) {
+		close(handle->fd);
+	}
+
+	if (handle) {
+		*handle = default_mmap_file_handle;
+		free(handle);
+	}
+}
+
+fn mmap_file_handle *mmap_file(char *file)
+{
+	mmap_file_handle *handle = malloc(sizeof(mmap_file_handle));
+	struct stat sb;
+	int ret;
+
+	if (!handle)
+		return NULL;
+
+	*handle = default_mmap_file_handle;
+
+	handle->fd = open(file, O_RDWR);
+	if (handle->fd < 0) {
+		pr("Unable to open %s, map file failed: errno %d", file, errno);
+		munmap_file(handle);
+		return NULL;
+	}
+
+	ret = fstat(handle->fd, &sb);
+	if (ret) {
+		munmap_file(handle);
+		return NULL;
+	}
+	
+	handle->size = sb.st_size;
+	if (!handle->size) {
+		pr("Unable to mmap %s: File has zero size", file);
+		munmap_file(handle);
+		return NULL;
+	}
+
+	handle->map = mmap(NULL, handle->size, PROT_READ | PROT_WRITE, MAP_SHARED, handle->fd, 0);
+	if (handle->map == MAP_FAILED) {
+		pr("Unable to mmap %s, map file failed: errno %d", file, errno);
+		munmap_file(handle);
+		return NULL;
+	}
+
+	ret = madvise(handle->map, handle->size, MADV_HUGEPAGE);
+	if (ret) {
+		pr("Map %s (%s) cannot enable THP: errno %d", file, format_size(handle->size), errno);
 	}
 
 	return handle;

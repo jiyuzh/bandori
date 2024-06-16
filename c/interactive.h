@@ -15,17 +15,22 @@ fn void wait_enter_key(char *desc)
 	}
 }
 
+typedef struct formatted_size {
+	char str[16];
+} formatted_size;
+
 // Format a size into human readable form.
 // The buf should be able to hold at least 12 visible characters.
-fn void format_size(char *buf, u64 bytes)
+fn formatted_size format_size_impl(u64 bytes)
 {
+	formatted_size ret = { 0 };
 	char *unit = NULL;
 	u64 base = 0;
 
 	if (bytes < KB(1)) {
 		// We use short here to make static buffer size checker happy
-		sprintf(buf, "%hu bytes", (short) bytes);
-		return;
+		sprintf(ret.str, "%hu bytes", (short) bytes);
+		return ret;
 	}
 	else if (bytes < MB(1)) {
 		unit = "KiB";
@@ -48,8 +53,11 @@ fn void format_size(char *buf, u64 bytes)
 		base = PB(1);
 	}
 
-	sprintf(buf, "%.2Lf %s", bytes * 1.0L / base, unit);
+	sprintf(ret.str, "%.2Lf %s", bytes * 1.0L / base, unit);
+	return ret;
 }
+
+#define format_size(bytes) (format_size_impl(bytes).str)
 
 // Parse a human readable size into its byte count.
 // This implementation is aware of 'B' (byte) and 'b' (bit), preferring byte when ambiguous.
