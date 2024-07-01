@@ -384,5 +384,3 @@ function sig_err
 trap 'sig_err "$?"' ERR
 trap 'sig_exit "$?"' EXIT
 init_bash "$0"
-
-pr_err aaa
