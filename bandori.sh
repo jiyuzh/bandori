@@ -1,5 +1,22 @@
 #!/usr/bin/env false
 
+set -Eeuo pipefail
+
+#
+# The Spell
+#
+
+: <<'END'
+#!/usr/bin/env bash
+
+set -Eeuo pipefail
+
+bandori="bandori.sh" # relative path
+source "${BANDORI:-"$(dirname "$(realpath -e "${BASH_SOURCE[0]:-$0}")")/$bandori"}"
+END
+
+
+
 #
 # Standard Setup
 #
@@ -238,6 +255,31 @@ function math
 	echo "$@" | bc -l
 }
 
+# Throw an exception
+# Arguments:
+#   $1: The return code
+#   $2...: [optional] The error message, in printf format
+function throw
+{
+	local retval="$1"
+	local fmt
+	shift
+
+	if [ "$#" -ge 1 ]; then
+		fmt="%s Unhandled exception was thrown.\n\nError code: %d\nMessage: $1\n"
+
+		shift
+
+		clrs err "$fmt" "$(pr_timestamp)" "$retval" "$@"
+	else
+		fmt="%s Unhandled exception was thrown.\n\nError code: %d\n"
+
+		clrs err "$fmt" "$(pr_timestamp)" "$retval"
+	fi
+
+	return "$retval"
+}
+
 
 
 #
@@ -353,7 +395,6 @@ function sig_err
 #
 
 # This is the standard setting for all our scripts
-set -Eeuo pipefail
 trap 'sig_err "$?"' ERR
 trap 'sig_exit "$?"' EXIT
 init_bash "$0"
