@@ -184,9 +184,7 @@ function pr_err
 	local fmt="$1"
 	shift
 
-	fmt="%s $fmt (%s)\n"
-
-	clrs err "$fmt" "$(pr_timestamp)" "$@" "$(get_caller 1)"
+	clrs err "%s $fmt (%s)\n" "$(pr_timestamp)" "$@" "$(get_caller 1)"
 }
 
 # Print a warning message
@@ -197,9 +195,7 @@ function pr_warn
 	local fmt="$1"
 	shift
 
-	fmt="%s $fmt (%s)\n"
-
-	clrs warn "$fmt" "$(pr_timestamp)" "$@" "$(get_caller 1)"
+	clrs warn "%s $fmt (%s)\n" "$(pr_timestamp)" "$@" "$(get_caller 1)"
 }
 
 # Print an info message
@@ -210,9 +206,7 @@ function pr_info
 	local fmt="$1"
 	shift
 
-	fmt="%s $fmt (%s)\n"
-
-	clrs info "$fmt" "$(pr_timestamp)" "$@" "$(get_caller 1)"
+	clrs info "%s $fmt (%s)\n" "$(pr_timestamp)" "$@" "$(get_caller 1)"
 }
 
 # Print a success message
@@ -223,9 +217,7 @@ function pr_succ
 	local fmt="$1"
 	shift
 
-	fmt="%s $fmt (%s)\n"
-
-	clrs succ "$fmt" "$(pr_timestamp)" "$@" "$(get_caller 1)"
+	clrs succ "%s $fmt (%s)\n" "$(pr_timestamp)" "$@" "$(get_caller 1)"
 }
 
 # Print a message
@@ -236,9 +228,7 @@ function pr
 	local fmt="$1"
 	shift
 
-	fmt="%s $fmt (%s)\n"
-
-	printf "$fmt" "$(pr_timestamp)" "$@" "$(get_caller 1)"
+	printf "%s $fmt (%s)\n" "$(pr_timestamp)" "$@" "$(get_caller 1)"
 }
 
 
@@ -262,19 +252,15 @@ function math
 function throw
 {
 	local retval="$1"
-	local fmt
 	shift
 
 	if [ "$#" -ge 1 ]; then
-		fmt="%s Unhandled exception was thrown.\n\nError code: %d\nMessage: $1\n"
-
+		local fmt="$1"
 		shift
 
-		clrs err "$fmt" "$(pr_timestamp)" "$retval" "$@"
+		clrs err "%s Unhandled exception was thrown.\n\nError code: %d\nMessage: $fmt\n" "$(pr_timestamp)" "$retval" "$@"
 	else
-		fmt="%s Unhandled exception was thrown.\n\nError code: %d\n"
-
-		clrs err "$fmt" "$(pr_timestamp)" "$retval"
+		clrs err "%s Unhandled exception was thrown.\n\nError code: %d\n" "$(pr_timestamp)" "$retval"
 	fi
 
 	return "$retval"
@@ -398,3 +384,5 @@ function sig_err
 trap 'sig_err "$?"' ERR
 trap 'sig_exit "$?"' EXIT
 init_bash "$0"
+
+pr_err aaa
