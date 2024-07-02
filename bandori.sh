@@ -47,7 +47,7 @@ function fini_once_bash
 	rm "$BURUAKA_SCRIPT_TRACE"
 
 	# Hook up Buruaka notifier for long running script (>= 1 min)
-	if [ -n "${BURUAKA:+x}" ] && [ "$(script_elapsed_sec)" -ge 60 ]; then
+	if [ -n "${BURUAKA:-}" ] && [ "$(script_elapsed_sec)" -ge 60 ]; then
 		"$BURUAKA/bin/bell" "Execution done: $BURUAKA_SCRIPT_IDENTITY"
 	fi
 }
@@ -60,7 +60,7 @@ function init_bash
 	local cmdline="$1"
 
 	# Script nesting handling, primarily used in signal handlers
-	if [ -z "${BURUAKA_SCRIPT_NESTING:+x}" ]; then
+	if [ -z "${BURUAKA_SCRIPT_NESTING:-}" ]; then
 		export BURUAKA_SCRIPT_NESTING=1
 	else
 		export BURUAKA_SCRIPT_NESTING=$((BURUAKA_SCRIPT_NESTING + 1))
