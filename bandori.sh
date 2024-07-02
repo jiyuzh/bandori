@@ -12,7 +12,7 @@ set -Eeuo pipefail
 set -Eeuo pipefail
 
 bandori="bandori.sh" # relative path
-source "${BANDORI:-"$(dirname "$(realpath -e "${BASH_SOURCE[0]:-$0}")")/$bandori"}"
+source "$(dirname "$(realpath -e "${BASH_SOURCE[0]:-$0}")")/$bandori"
 END
 
 
