@@ -18,6 +18,17 @@ END
 
 
 #
+# Knobs
+#
+
+: <<'END'
+BANDORI_QUIET (default: unset)
+	When set and not empty, suppress unnecessary report messages.
+END
+
+
+
+#
 # Standard Setup
 #
 
@@ -29,26 +40,26 @@ function init_once_bash
 	local cmdline="$1"
 
 	# Run time accounting
-	BURUAKA_SCRIPT_START=$(date +%s.%N)
-	export BURUAKA_SCRIPT_START
+	BANDORI_SCRIPT_START=$(date +%s.%N)
+	export BANDORI_SCRIPT_START
 
 	# Create file for recursive trace
-	BURUAKA_SCRIPT_TRACE=$(mktemp)
-	export BURUAKA_SCRIPT_TRACE
+	BANDORI_SCRIPT_TRACE=$(mktemp)
+	export BANDORI_SCRIPT_TRACE
 
 	# Backup real $0 for later use
-	export BURUAKA_SCRIPT_IDENTITY="$cmdline"
+	export BANDORI_SCRIPT_IDENTITY="$cmdline"
 }
 
 # Fini routine, called only at the top level
 function fini_once_bash
 {
 	# Cleanup recursive trace
-	rm "$BURUAKA_SCRIPT_TRACE"
+	rm "$BANDORI_SCRIPT_TRACE"
 
-	# Hook up Buruaka notifier for long running script (>= 1 min)
+	# Hook up BANDORI notifier for long running script (>= 1 min)
 	if [ -n "${BURUAKA:-}" ] && [ "$(script_elapsed_sec)" -ge 60 ]; then
-		"$BURUAKA/bin/bell" "Execution done: $BURUAKA_SCRIPT_IDENTITY"
+		"$BURUAKA/bin/bell" "Execution done: $BANDORI_SCRIPT_IDENTITY"
 	fi
 }
 
@@ -60,14 +71,14 @@ function init_bash
 	local cmdline="$1"
 
 	# Script nesting handling, primarily used in signal handlers
-	if [ -z "${BURUAKA_SCRIPT_NESTING:-}" ]; then
-		export BURUAKA_SCRIPT_NESTING=1
+	if [ -z "${BANDORI_SCRIPT_NESTING:-}" ]; then
+		export BANDORI_SCRIPT_NESTING=1
 	else
-		export BURUAKA_SCRIPT_NESTING=$((BURUAKA_SCRIPT_NESTING + 1))
+		export BANDORI_SCRIPT_NESTING=$((BANDORI_SCRIPT_NESTING + 1))
 	fi
 
 	
-	if [ "$BURUAKA_SCRIPT_NESTING" -eq 1 ]; then
+	if [ "$BANDORI_SCRIPT_NESTING" -eq 1 ]; then
 		init_once_bash "$cmdline"
 	fi
 }
@@ -75,7 +86,7 @@ function init_bash
 # Fini routine, called every time script is exiting
 function fini_bash
 {
-	if [ "$BURUAKA_SCRIPT_NESTING" -eq 1 ]; then
+	if [ "$BANDORI_SCRIPT_NESTING" -eq 1 ]; then
 		fini_once_bash
 	fi
 }
@@ -105,7 +116,7 @@ function script_file
 # Get the time elapsed since execution start in seconds, with highest precision to nanoseconds
 function script_elapsed_ns
 {
-	math "$(date +%s.%N) - $BURUAKA_SCRIPT_START"
+	math "$(date +%s.%N) - $BANDORI_SCRIPT_START"
 }
 
 # Get the time elapsed since execution start in seconds, rounded down to an integer
@@ -343,7 +354,7 @@ function sig_exit
 {
 	local retval="$1"
 
-	if [ "$BURUAKA_SCRIPT_NESTING" -eq 1 ]; then
+	if [ "$BANDORI_SCRIPT_NESTING" -eq 1 ] && [ -z "${BANDORI_QUIET:-}" ]; then
 		if [ "$retval" -eq 0 ]; then
 			clrs succ "\n%s Execution Succeed\n" "$(pr_timestamp)"
 		else
@@ -363,10 +374,10 @@ function sig_err
 
 	if [ "$retval" -ne 0 ]; then
 		# We use a file to build a monolithic stack trace when scripts nests
-		get_stacktrace 1 >> "$BURUAKA_SCRIPT_TRACE"
+		get_stacktrace 1 >> "$BANDORI_SCRIPT_TRACE"
 
-		if [ "$BURUAKA_SCRIPT_NESTING" -eq 1 ]; then
-			clrs err "\n%s Unhandled error (code: $retval) was thrown.\n\nStack Trace:\n%s\n" "$(pr_timestamp)" "$(cat "$BURUAKA_SCRIPT_TRACE")"
+		if [ "$BANDORI_SCRIPT_NESTING" -eq 1 ]; then
+			clrs err "\n%s Unhandled error (code: $retval) was thrown.\n\nStack Trace:\n%s\n" "$(pr_timestamp)" "$(cat "$BANDORI_SCRIPT_TRACE")"
 		fi
 	fi
 
