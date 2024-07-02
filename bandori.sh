@@ -24,6 +24,9 @@ END
 : <<'END'
 BANDORI_QUIET (default: unset)
 	When set and not empty, suppress unnecessary report messages.
+
+BANDORI_REINIT (default: unset)
+	When set and not empty, treat the current script as top level (user-invoked) script.
 END
 
 
@@ -69,6 +72,11 @@ function fini_once_bash
 function init_bash
 {
 	local cmdline="$1"
+
+	if [ -n "${BANDORI_REINIT:-}" ]; then
+		unset BANDORI_SCRIPT_NESTING
+		unset BANDORI_REINIT
+	fi
 
 	# Script nesting handling, primarily used in signal handlers
 	if [ -z "${BANDORI_SCRIPT_NESTING:-}" ]; then
