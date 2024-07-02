@@ -28,11 +28,16 @@ our @EXPORT = qw(
 our $VERSION = '0.01';
 
 # Opens a text file, reads all the text in the file into a string, and then closes the file.
+# If the target file cannot be read and a default value is provided, the default value is returned instead.
 sub readAllText
 {
-	my ($path) = @_;
+	my ($path, $default) = @_;
 
-	open(my $fd, '<', $path) or die "Could not open $path: $!\n";
+	open(my $fd, '<', $path) or do {
+		return $default if (defined $default);
+		die "Could not open $path: $!\n";
+	};
+
 	my $text = do { local $/; <$fd> };
 	close($fd);
 
