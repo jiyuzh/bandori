@@ -27,6 +27,9 @@ BANDORI_QUIET (default: unset)
 
 BANDORI_REINIT (default: unset)
 	When set and not empty, treat the current script as top level (user-invoked) script.
+
+BANDORI_CLEAN_PR (default: unset)
+	When set and not empty, do not print caller location for pr_* macros.
 END
 
 
@@ -195,15 +198,28 @@ function pr_timestamp
 	printf "[%12.6f]" "$(script_elapsed_ns)"
 }
 
+# Internal use only. Print a formatted message
+function pr_core
+{
+	local color="$1"
+	shift
+
+	local fmt="$1"
+	shift
+
+	if [ -n "${BANDORI_CLEAN_PR:-}" ]; then
+		clrs "$color" "%s $fmt\n" "$(pr_timestamp)" "$@"
+	else
+		clrs "$color" "%s $fmt (%s)\n" "$(pr_timestamp)" "$@" "$(get_caller 1)"
+	fi
+}
+
 # Print an error message
 # Arguments:
 #   $1...: printf format string and parameters
 function pr_err
 {
-	local fmt="$1"
-	shift
-
-	clrs err "%s $fmt (%s)\n" "$(pr_timestamp)" "$@" "$(get_caller 1)"
+	pr_core err "$@"
 }
 
 # Print a warning message
@@ -211,10 +227,7 @@ function pr_err
 #   $1...: printf format string and parameters
 function pr_warn
 {
-	local fmt="$1"
-	shift
-
-	clrs warn "%s $fmt (%s)\n" "$(pr_timestamp)" "$@" "$(get_caller 1)"
+	pr_core warn "$@"
 }
 
 # Print an info message
@@ -222,10 +235,7 @@ function pr_warn
 #   $1...: printf format string and parameters
 function pr_info
 {
-	local fmt="$1"
-	shift
-
-	clrs info "%s $fmt (%s)\n" "$(pr_timestamp)" "$@" "$(get_caller 1)"
+	pr_core info "$@"
 }
 
 # Print a success message
@@ -233,10 +243,7 @@ function pr_info
 #   $1...: printf format string and parameters
 function pr_succ
 {
-	local fmt="$1"
-	shift
-
-	clrs succ "%s $fmt (%s)\n" "$(pr_timestamp)" "$@" "$(get_caller 1)"
+	pr_core succ "$@"
 }
 
 # Print a message
@@ -247,7 +254,11 @@ function pr
 	local fmt="$1"
 	shift
 
-	printf "%s $fmt (%s)\n" "$(pr_timestamp)" "$@" "$(get_caller 1)"
+	if [ -n "${BANDORI_CLEAN_PR:-}" ]; then
+		printf "%s $fmt\n" "$(pr_timestamp)" "$@"
+	else
+		printf "%s $fmt (%s)\n" "$(pr_timestamp)" "$@" "$(get_caller 1)"
+	fi
 }
 
 
