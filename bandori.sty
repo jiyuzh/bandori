@@ -1,0 +1,173 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{bandori}[2024/08/21 1.0.0 Bandori LaTeX Library by Jiyuan Zhang]
+
+\RequirePackage{comment} % \begin{comment}
+\RequirePackage{ifthen} % \newboolean, \setboolean, \ifthenelse, \boolean
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% USER DOCUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{comment}
+
+Options:
+	usenix: Use with USENIX submissions.
+	acmart: Use with ACM submissions.
+	preview: Disable editorial commands for preview.
+
+To use with USENIX conferences (OSDI, FAST, NSDI, etc.):
+
+	\documentclass[letterpaper,twocolumn,10pt]{article}
+	\usepackage[usenix]{bandori/bandori}
+	\input{macro}
+
+	\begin{document}
+	\title{\bf Anvil: Verifying Liveness of Cluster Management Controllers}
+
+	\maketitle
+	\input{sec/abstract}
+	\input{sec/intro}
+
+	\bibliographystyle{plain}
+	\bibliography{references,reftmp}
+
+	\end{document}
+	\endinput
+
+To use with ACM conferences (SOSP, ASPLOS, etc.):
+
+	\documentclass[sigplan,10pt,nonacm]{acmart}
+	\usepackage[acmart]{bandori/bandori}
+	\input{macro}
+
+	\begin{document}
+	\title{\bf Anvil: Verifying Liveness of Cluster Management Controllers}
+
+	\input{sec/abstract}
+	\maketitle
+	\input{sec/intro}
+
+	\bibliographystyle{acm}
+	\bibliography{references,reftmp}
+
+	\end{document}
+	\endinput
+
+\end{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% COMMON PACKAGE IMPORTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\RequirePackage{amsfonts} % basic fonts
+\RequirePackage{xspace} % \xspace
+\RequirePackage{multirow} % \multirow
+\RequirePackage{makecell} % \makecell
+\RequirePackage{tabularx} % \begin{tabularx}
+\RequirePackage{wrapfig} % \begin{wrapfigure}
+\RequirePackage[hyphens]{xurl} % \url with wrapping
+\RequirePackage{xcolor} % \color with single word names
+\RequirePackage{flushend} % balance two columns on the last page
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% STYLING
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand*\circled[1]{%
+	\begin{tikzpicture}[baseline=(C.base)]
+		\node[draw,circle,fill=black,inner sep=0.1pt](C) {\textcolor{white}{#1}};
+	\end{tikzpicture}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% COLORS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{popipa}{HTML}{FF3377}
+\definecolor{roselia}{HTML}{3344AA}
+\definecolor{ras}{HTML}{39C9C5}
+\definecolor{monica}{HTML}{33AAFF}
+\definecolor{mygo}{HTML}{3388BB}
+\definecolor{mujica}{HTML}{881144}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% EDITORIAL
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newboolean{@bandoriEditorial}
+\setboolean{@bandoriEditorial}{true}
+
+\DeclareOption{preview}{
+	\setboolean{@bandoriEditorial}{false}
+}
+
+\AtEndOfPackage{
+	\ifthenelse{\boolean{@bandoriEditorial}}
+	{
+		\newcommand{\JZ}[1]{{\color{orange} #1}} % new text
+		\newcommand{\JZx}[1]{{\color{purple} \sout{#1}}} % del text
+		\newcommand{\JZc}[1]{{\color{comment} /* \textit{#1} */}} % comment
+		\newcommand{\JZd}[1]{} % exile to the void
+		\newcommand{\JZe}[1]{{\color{mujica} \uwave{#1}}} % highlight
+		\newcommand{\JZtodo}{\colorbox{mygo}{\color{white} TODO:}} % todo
+		\newcommand{\JZmark}{\colorbox{mujica}{\color{white} NOTE:}} % marking
+
+		\newcommand{\jz}[1]{{\JZ{#1}}} % new text
+		\newcommand{\jza}[2]{{\JZ{#1} \JZc{#2}}} % add and comment text
+		\newcommand{\jzc}[2]{{\JZe{#1} \JZc{#2}}} % comment existing text
+		\newcommand{\jzd}[2]{{\JZx{#1} \JZc{#2}}} % delete and comment text
+		\newcommand{\jzx}[2]{{\JZx{#1} \JZ{#2}}} % delete and replace text
+		\newcommand{\jzxc}[3]{{\JZx{#1} \JZ{#2} \JZc{#3}}} % replace text with comment
+		\newcommand{\jztodo}[1]{{\JZc{\JZtodo #1}}} % todo with message
+		\newcommand{\jzmark}[1]{{\JZc{\JZmark #1}}} % marking with message
+
+		% so we can mix \cite within colored text
+		\RequirePackage[normalem]{ulem}
+		\let\oldcite\cite
+		\renewcommand{\cite}[1]{\mbox{\oldcite{#1}}}
+	}
+	{
+		\newcommand{\JZ}[1]{#1} % new text
+		\newcommand{\JZx}[1]{} % del text
+		\newcommand{\JZc}[1]{} % comment
+		\newcommand{\JZd}[1]{} % exile to the void
+		\newcommand{\JZe}[1]{} % highlight
+		\newcommand{\JZtodo}{} % todo
+		\newcommand{\JZmark}{} % marking
+
+		\newcommand{\jz}[1]{#1} % new text
+		\newcommand{\jza}[2]{#1} % add and comment text
+		\newcommand{\jzc}[2]{#1} % comment existing text
+		\newcommand{\jzd}[2]{} % delete and comment text
+		\newcommand{\jzx}[2]{#2} % delete and replace text
+		\newcommand{\jzxc}[3]{#2} % replace text with comment
+		\newcommand{\jztodo}{} % todo with message
+		\newcommand{\jzmark}{} % marking with message
+	}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CODE INJECTIONS FOR TEMPLATES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareOption{usenix}{
+	\AtEndOfPackage{
+		% ACM hates this package
+		\RequirePackage{cite} % \cite sorted
+
+		\RequirePackage{usenix}
+		\RequirePackage{titling}
+		\setlength{\droptitle}{-3.5em}
+		\postauthor{\end{tabular}\vspace{-0.5in}\end{center}}
+		\date{}
+	}
+}
+
+\DeclareOption{acmart}{
+	\AtEndOfPackage{
+		\renewcommand\footnotetextcopyrightpermission[1]{}
+	}
+}
+
+\DeclareOption*{\PackageWarning{bandori/bandori}{Unknown Option}}
+\ProcessOptions\relax
+\endinput

@@ -1,0 +1,1853 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% NORMALIZED CONFERENCE PROCEEDINGS
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@string{SPACE = " "},
+@string{POT = "Proceedings of the" # SPACE},
+
+% Source: https://www.asplos-conference.org/, https://www.sigmod.org/publications/dblp/db/conf/asplos/index.html
+@string{ASPLOS = SPACE # "International Conference on Architectural Support for Programming Languages and Operating Systems" # SPACE},
+@string{ASPLOS82 = POT # "Symposium on Architectural Support for Programming Languages and Operating Systems (ASPLOS-I)"} % Mar 1982,
+@string{ASPLOS87 = POT # "Second" # ASPLOS # "(ASPLOS-II)"} % Oct 1987,
+@string{ASPLOS89 = POT # "Third" # ASPLOS # "(ASPLOS-III)"} % Apr 1989,
+@string{ASPLOS91 = POT # "Fourth" # ASPLOS # "(ASPLOS-IV)"} % Apr 1991,
+@string{ASPLOS92 = POT # "Fifth" # ASPLOS # "(ASPLOS-V)"} % Oct 1992,
+@string{ASPLOS94 = POT # "Sixth" # ASPLOS # "(ASPLOS-VI)"} % Oct 1994,
+@string{ASPLOS96 = POT # "7th" # ASPLOS # "(ASPLOS-VII)"} % Oct 1996,
+@string{ASPLOS98 = POT # "8th" # ASPLOS # "(ASPLOS-VIII)"} % Oct 1998,
+@string{ASPLOS00 = POT # "9th" # ASPLOS # "(ASPLOS-IX)"} % Nov 2000,
+@string{ASPLOS02 = POT # "10th" # ASPLOS # "(ASPLOS-X)"} % Oct 2002,
+@string{ASPLOS04 = POT # "11th" # ASPLOS # "(ASPLOS-XI)"} % Oct 2004,
+@string{ASPLOS06 = POT # "12th" # ASPLOS # "(ASPLOS-XII)"} % Oct 2006,
+@string{ASPLOS08 = POT # "13th" # ASPLOS # "(ASPLOS-XIII)"} % Mar 2008,
+@string{ASPLOS09 = POT # "14th" # ASPLOS # "(ASPLOS-XIV)"} % Mar 2009,
+@string{ASPLOS10 = POT # "15th" # ASPLOS # "(ASPLOS-XV)"} % Mar 2010,
+@string{ASPLOS11 = POT # "16th" # ASPLOS # "(ASPLOS-XVI)"} % Mar 2011,
+@string{ASPLOS12 = POT # "17th" # ASPLOS # "(ASPLOS-XVII)"} % Mar 2012,
+@string{ASPLOS13 = POT # "18th" # ASPLOS # "(ASPLOS '13)"} % Mar 2013,
+@string{ASPLOS14 = POT # "19th" # ASPLOS # "(ASPLOS '14)"} % Mar 2014,
+@string{ASPLOS15 = POT # "20th" # ASPLOS # "(ASPLOS '15)"} % Mar 2015,
+@string{ASPLOS16 = POT # "21st" # ASPLOS # "(ASPLOS '16)"} % Apr 2016,
+@string{ASPLOS17 = POT # "22nd" # ASPLOS # "(ASPLOS '17)"} % Apr 2017,
+@string{ASPLOS18 = POT # "23rd" # ASPLOS # "(ASPLOS '18)"} % Mar 2018,
+@string{ASPLOS19 = POT # "24th" # ASPLOS # "(ASPLOS '19)"} % Apr 2019,
+@string{ASPLOS20 = POT # "25th" # ASPLOS # "(ASPLOS '20)"} % Mar 2020,
+@string{ASPLOS21 = POT # "26th" # ASPLOS # "(ASPLOS '21)"} % Apr 2021,
+@string{ASPLOS22 = POT # "27th" # ASPLOS # "(ASPLOS '22)"} % Feb 2022,
+@string{ASPLOS23 = POT # "28th" # ASPLOS # "(ASPLOS '23)"} % Mar 2023,
+@string{ASPLOS24 = POT # "29th" # ASPLOS # "(ASPLOS '24)"} % Apr 2024,
+
+% Source: https://www.sosp.org/
+@string{SOSP = SPACE # "ACM Symposium on Operating Systems Principles" # SPACE},
+@string{SOSP67 = POT # "1st" # SOSP # "(SOSP '67)"} % Jan 1967,
+@string{SOSP69 = POT # "2nd" # SOSP # "(SOSP '69)"} % Oct 1969,
+@string{SOSP71 = POT # "3rd" # SOSP # "(SOSP '71)"} % Oct 1971,
+@string{SOSP73 = POT # "4th" # SOSP # "(SOSP '73)"} % Jan 1973,
+@string{SOSP75 = POT # "5th" # SOSP # "(SOSP '75)"} % Nov 1975,
+@string{SOSP77 = POT # "6th" # SOSP # "(SOSP '77)"} % Nov 1977,
+@string{SOSP79 = POT # "7th" # SOSP # "(SOSP '79)"} % Dec 1979,
+@string{SOSP81 = POT # "8th" # SOSP # "(SOSP '81)"} % Dec 1981,
+@string{SOSP83 = POT # "9th" # SOSP # "(SOSP '83)"} % Oct 1983,
+@string{SOSP85 = POT # "10th" # SOSP # "(SOSP '85)"} % Dec 1985,
+@string{SOSP87 = POT # "11th" # SOSP # "(SOSP '87)"} % Nov 1987,
+@string{SOSP89 = POT # "12th" # SOSP # "(SOSP '89)"} % Nov 1989,
+@string{SOSP91 = POT # "13th" # SOSP # "(SOSP '91)"} % Oct 1991,
+@string{SOSP93 = POT # "14th" # SOSP # "(SOSP '93)"} % Dec 1993,
+@string{SOSP95 = POT # "15th" # SOSP # "(SOSP '95)"} % Dec 1995,
+@string{SOSP97 = POT # "16th" # SOSP # "(SOSP '97)"} % Oct 1997,
+@string{SOSP99 = POT # "17th" # SOSP # "(SOSP '99)"} % Dec 1999,
+@string{SOSP01 = POT # "18th" # SOSP # "(SOSP '01)"} % Oct 2001,
+@string{SOSP03 = POT # "19th" # SOSP # "(SOSP '03)"} % Oct 2003,
+@string{SOSP05 = POT # "20th" # SOSP # "(SOSP '05)"} % Oct 2005,
+@string{SOSP07 = POT # "21st" # SOSP # "(SOSP '07)"} % Oct 2007,
+@string{SOSP09 = POT # "22nd" # SOSP # "(SOSP '09)"} % Oct 2009,
+@string{SOSP11 = POT # "23rd" # SOSP # "(SOSP '11)"} % Oct 2011,
+@string{SOSP13 = POT # "24th" # SOSP # "(SOSP '13)"} % Nov 2013,
+@string{SOSP15 = POT # "25th" # SOSP # "(SOSP '15)"} % Oct 2015,
+@string{SOSP17 = POT # "26th" # SOSP # "(SOSP '17)"} % Oct 2017,
+@string{SOSP19 = POT # "27th" # SOSP # "(SOSP '19)"} % Oct 2019,
+@string{SOSP21 = POT # "28th" # SOSP # "(SOSP '21)"} % Oct 2021,
+@string{SOSP23 = POT # "29th" # SOSP # "(SOSP '23)"} % Oct 2023,
+@string{SOSP24 = POT # "30th" # SOSP # "(SOSP '24)"} % Nov 2024,
+
+% Source: https://www.usenix.org/conferences/byname/179
+@string{OSDIa = SPACE # "Symposium on Operating Systems Design and Implementation" # SPACE},
+@string{OSDIb = SPACE # "USENIX Symposium on Operating Systems Design and Implementation" # SPACE},
+@string{OSDI94 = POT # "1st" # OSDIa # "(OSDI '94)"} % Nov 1994,
+@string{OSDI96 = POT # "2nd" # OSDIa # "(OSDI '96)"} % Oct 1996,
+@string{OSDI99 = POT # "3rd" # OSDIa # "(OSDI '99)"} % Feb 1999,
+@string{OSDI00 = POT # "4th" # OSDIa # "(OSDI 2000)"} % Oct 2000,
+@string{OSDI02 = POT # "5th" # OSDIa # "(OSDI '02)"} % Dec 2002,
+@string{OSDI04 = POT # "6th" # OSDIa # "(OSDI '04)"} % Dec 2004,
+@string{OSDI06 = POT # "7th" # OSDIb # "(OSDI '06)"} % Nov 2006,
+@string{OSDI08 = POT # "8th" # OSDIb # "(OSDI '08)"} % Dec 2008,
+@string{OSDI10 = POT # "9th" # OSDIb # "(OSDI '10)"} % Oct 2010,
+@string{OSDI12 = POT # "10th" # OSDIb # "(OSDI '12)"} % Oct 2012,
+@string{OSDI14 = POT # "11th" # OSDIb # "(OSDI '14)"} % Oct 2014,
+@string{OSDI16 = POT # "12th" # OSDIb # "(OSDI '16)"} % Nov 2016,
+@string{OSDI18 = POT # "13th" # OSDIb # "(OSDI '18)"} % Oct 2018,
+@string{OSDI20 = POT # "14th" # OSDIb # "(OSDI '20)"} % Nov 2020,
+@string{OSDI21 = POT # "15th" # OSDIb # "(OSDI '21)"} % Jul 2021,
+@string{OSDI22 = POT # "16th" # OSDIb # "(OSDI '22)"} % Jul 2022,
+@string{OSDI23 = POT # "17th" # OSDIb # "(OSDI '23)"} % Jul 2023,
+@string{OSDI24 = POT # "18th" # OSDIb # "(OSDI '24)"} % Jul 2024,
+
+% Source: https://www.usenix.org/conferences/byname/131
+@string{ATC = SPACE # "USENIX Annual Technical Conference" # SPACE},
+@string{ATC83w = "USENIX 1983 Winter Conference Proceedings (USENIX Winter '83)"} % Jan 1983,
+@string{ATC83s = "USENIX 1983 Summer Conference Proceedings (USENIX Summer '83)"} % Jun 1983,
+@string{ATC84w = "USENIX 1984 Winter Conference Proceedings (USENIX Winter '84)"} % Jan 1984,
+@string{ATC84s = "USENIX 1984 Summer Conference Proceedings (USENIX Summer '84)"} % Jun 1984,
+@string{ATC85w = "USENIX 1985 Winter Conference Proceedings (USENIX Winter '85)"} % Jan 1985,
+@string{ATC85s = "USENIX 1985 Summer Conference Proceedings (USENIX Summer '85)"} % Jun 1985,
+@string{ATC86w = POT # "1986 Winter USENIX Technical Conference (USENIX Winter '86)"} % Jan 1986,
+@string{ATC86s = POT # "1986 Summer USENIX Technical Conference (USENIX Summer '86)"} % Jun 1986,
+@string{ATC87w = POT # "1987 Winter USENIX Technical Conference (USENIX Winter '87)"} % Jan 1987,
+@string{ATC87s = POT # "1987 Summer USENIX Technical Conference (USENIX Summer '87)"} % Jun 1987,
+@string{ATC88w = POT # "1988 Winter USENIX Technical Conference (USENIX Winter '88)"} % Jan 1988,
+@string{ATC88s = POT # "1988 Summer USENIX Technical Conference (USENIX Summer '88)"} % Jun 1988,
+@string{ATC89w = POT # "Winter 1989 USENIX Technical Conference (USENIX Winter '89)"} % Jan 1989,
+@string{ATC89s = POT # "Summer 1989 USENIX Technical Conference (USENIX Summer '89)"} % Jun 1989,
+@string{ATC90w = POT # "Winter 1990 USENIX Technical Conference (USENIX Winter '90)"} % Jan 1990,
+@string{ATC90s = POT # "Summer 1990 USENIX Technical Conference (USENIX Summer '90)"} % Jun 1990,
+@string{ATC91w = POT # "Winter 1991 USENIX Technical Conference (USENIX Winter '91)"} % Jan 1992,
+@string{ATC91s = POT # "Summer 1991 USENIX Technical Conference (USENIX Summer '91)"} % Jun 1992,
+@string{ATC92w = POT # "USENIX Winter 1992 Technical Conference (USENIX Winter '92)"} % Jan 1992,
+@string{ATC92s = POT # "USENIX Summer 1992 Technical Conference (USENIX Summer '92)"} % Jun 1992,
+@string{ATC93w = POT # "USENIX Winter 1993 Technical Conference (USENIX Winter '93)"} % Jan 1993,
+@string{ATC93s = POT # "USENIX Summer 1993 Technical Conference (USENIX Summer '93)"} % Jun 1993,
+@string{ATC94w = POT # "USENIX Winter 1994 Technical Conference (USENIX Winter '94)"} % Jan 1994,
+@string{ATC94s = POT # "USENIX Summer 1994 Technical Conference (USENIX Summer '94)"} % Jun 1994,
+@string{ATC95 = POT # "USENIX 1995 Technical Conference (USENIX '95)"} % Jan 1995,
+@string{ATC96 = POT # "USENIX 1996 Annual Technical Conference (USENIX '96)"} % Jan 1996,
+@string{ATC97 = POT # "USENIX 1997 Annual Technical Conference (USENIX '97)"} % Jan 1997,
+@string{ATC98 = POT # "1998" # ATC # "(USENIX '98)"} % Jun 1998,
+@string{ATC99 = POT # "1999" # ATC # "(USENIX '99)"} % Jun 1999,
+@string{ATC00 = POT # "2000" # ATC # "(USENIX '00)"} % Jun 2000,
+@string{ATC01 = POT # "2001" # ATC # "(USENIX '01)"} % Jun 2001,
+@string{ATC02 = POT # "2002" # ATC # "(USENIX '02)"} % Jun 2002,
+@string{ATC03 = POT # "2003" # ATC # "(USENIX '03)"} % Jun 2003,
+@string{ATC04 = POT # "2004" # ATC # "(USENIX '04)"} % Jun 2004,
+@string{ATC05 = POT # "2005" # ATC # "(USENIX '05)"} % Apr 2005,
+@string{ATC06 = POT # "2006" # ATC # "(USENIX '06)"} % May 2006,
+@string{ATC07 = POT # "2007" # ATC # "(USENIX '07)"} % Jun 2007,
+@string{ATC08 = POT # "2008" # ATC # "(USENIX '08)"} % Jun 2008,
+@string{ATC09 = POT # "2009" # ATC # "(USENIX '09)"} % Jun 2009,
+@string{ATC10 = POT # "2010" # ATC # "(USENIX ATC '10)"} % Jun 2010,
+@string{ATC11 = POT # "2011" # ATC # "(USENIX ATC '11)"} % Jun 2011,
+@string{ATC12 = POT # "2012" # ATC # "(USENIX ATC '12)"} % Jun 2012,
+@string{ATC13 = POT # "2013" # ATC # "(USENIX ATC '13)"} % Jun 2013,
+@string{ATC14 = POT # "2014" # ATC # "(USENIX ATC '14)"} % Jun 2014,
+@string{ATC15 = POT # "2015" # ATC # "(USENIX ATC '15)"} % Jul 2015,
+@string{ATC16 = POT # "2016" # ATC # "(USENIX ATC '16)"} % Jun 2016,
+@string{ATC17 = POT # "2017" # ATC # "(USENIX ATC '17)"} % Jul 2017,
+@string{ATC18 = POT # "2018" # ATC # "(USENIX ATC '18)"} % Jul 2018,
+@string{ATC19 = POT # "2019" # ATC # "(USENIX ATC '19)"} % Jul 2019,
+@string{ATC20 = POT # "2020" # ATC # "(USENIX ATC '20)"} % Jul 2020,
+@string{ATC21 = POT # "2021" # ATC # "(USENIX ATC '21)"} % Jul 2021,
+@string{ATC22 = POT # "2022" # ATC # "(USENIX ATC '22)"} % Jul 2022,
+@string{ATC23 = POT # "2023" # ATC # "(USENIX ATC '23)"} % Jul 2023,
+@string{ATC24 = POT # "2024" # ATC # "(USENIX ATC '24)"} % Jul 2024,
+
+% Source: https://www.eurosys.org/
+@string{EuroSys = SPACE # "ACM European Conference on Computer Systems" # SPACE},
+@string{EuroSys06 = POT # "1st" # EuroSys # "(EuroSys '06)"} % Apr 2006,
+@string{EuroSys07 = POT # "2nd" # EuroSys # "(EuroSys '07)"} % Mar 2007,
+@string{EuroSys08 = POT # "3rd" # EuroSys # "(EuroSys '08)"} % Apr 2008,
+@string{EuroSys09 = POT # "4th" # EuroSys # "(EuroSys '09)"} % Apr 2009,
+@string{EuroSys10 = POT # "5th" # EuroSys # "(EuroSys '10)"} % Apr 2010,
+@string{EuroSys11 = POT # "6th" # EuroSys # "(EuroSys '11)"} % Apr 2011,
+@string{EuroSys12 = POT # "7th" # EuroSys # "(EuroSys '12)"} % Apr 2012,
+@string{EuroSys13 = POT # "8th" # EuroSys # "(EuroSys '13)"} % Apr 2013,
+@string{EuroSys14 = POT # "9th" # EuroSys # "(EuroSys '14)"} % Apr 2014,
+@string{EuroSys15 = POT # "10th" # EuroSys # "(EuroSys '15)"} % Apr 2015,
+@string{EuroSys16 = POT # "11th" # EuroSys # "(EuroSys '16)"} % Apr 2016,
+@string{EuroSys17 = POT # "12th" # EuroSys # "(EuroSys '17)"} % Apr 2017,
+@string{EuroSys18 = POT # "13th" # EuroSys # "(EuroSys '18)"} % Apr 2018,
+@string{EuroSys19 = POT # "14th" # EuroSys # "(EuroSys '19)"} % Mar 2019,
+@string{EuroSys20 = POT # "15th" # EuroSys # "(EuroSys '20)"} % Apr 2020,
+@string{EuroSys21 = POT # "16th" # EuroSys # "(EuroSys '21)"} % Apr 2021,
+@string{EuroSys22 = POT # "17th" # EuroSys # "(EuroSys '22)"} % Apr 2022,
+@string{EuroSys23 = POT # "18th" # EuroSys # "(EuroSys '23)"} % May 2023,
+@string{EuroSys24 = POT # "19th" # EuroSys # "(EuroSys '24)"} % Apr 2024,
+
+% Source: https://pact2024.github.io/
+@string{PACT = SPACE # "International Conference on Parallel Architectures and Compilation Techniques" # SPACE},
+@string{PACT93 = POT # "1993 IFIP WG10.3 Working Conference on Parallel Architectures and Compilation Techniques (PACT '93)"} % Jan 1993,
+@string{PACT94 = POT # "1994 IFIP WG10.3 Working Conference on Parallel Architectures and Compilation Techniques (PACT '94)"} % Aug 1994,
+@string{PACT95 = POT # "1995 IFIP WG10.3 Working Conference on Parallel Architectures and Compilation Techniques (PACT '95)"} % Jun 1995,
+@string{PACT96 = POT # "1996 Conference on Parallel Architectures and Compilation Techniques (PACT '96)"} % Oct 1996,
+@string{PACT97 = POT # "1997" # PACT # "(PACT '97)"} % Nov 1997,
+@string{PACT98 = POT # "1998" # PACT # "(PACT '98)"} % Oct 1998,
+@string{PACT99 = POT # "1999" # PACT # "(PACT '99)"} % Oct 1999,
+@string{PACT00 = POT # "2000" # PACT # "(PACT '00)"} % Oct 2000,
+@string{PACT01 = POT # "2001" # PACT # "(PACT '01)"} % Sep 2001,
+@string{PACT02 = POT # "2002" # PACT # "(PACT '02)"} % Sep 2002,
+@string{PACT03 = POT # "12th" # PACT # "(PACT '03)"} % Oct 2003,
+@string{PACT04 = POT # "13th" # PACT # "(PACT '04)"} % Oct 2004,
+@string{PACT05 = POT # "14th" # PACT # "(PACT '05)"} % Sep 2005,
+@string{PACT06 = POT # "15th" # PACT # "(PACT '06)"} % Sep 2006,
+@string{PACT07 = POT # "16th" # PACT # "(PACT '07)"} % Sep 2007,
+@string{PACT08 = POT # "17th" # PACT # "(PACT '08)"} % Oct 2008,
+@string{PACT09 = POT # "18th" # PACT # "(PACT '09)"} % Sep 2009,
+@string{PACT10 = POT # "19th" # PACT # "(PACT '10)"} % Sep 2010,
+@string{PACT11 = POT # "20th" # PACT # "(PACT '11)"} % Oct 2011,
+@string{PACT12 = POT # "21st" # PACT # "(PACT '12)"} % Sep 2012,
+@string{PACT13 = POT # "22nd" # PACT # "(PACT '13)"} % Oct 2013,
+@string{PACT14 = POT # "23rd" # PACT # "(PACT '14)"} % Aug 2014,
+@string{PACT15 = POT # "24th" # PACT # "(PACT '15)"} % Oct 2015,
+@string{PACT16 = POT # "25th" # PACT # "(PACT '16)"} % Sep 2016,
+@string{PACT17 = POT # "26th" # PACT # "(PACT '17)"} % Sep 2017,
+@string{PACT18 = POT # "27th" # PACT # "(PACT '18)"} % Nov 2018,
+@string{PACT19 = POT # "28th" # PACT # "(PACT '19)"} % Sep 2019,
+@string{PACT20 = POT # "29th" # PACT # "(PACT '20)"} % Oct 2020,
+@string{PACT21 = POT # "30th" # PACT # "(PACT '21)"} % Sep 2021,
+@string{PACT22 = POT # "31st" # PACT # "(PACT '22)"} % Oct 2022,
+@string{PACT23 = POT # "32nd" # PACT # "(PACT '23)"} % Oct 2023,
+@string{PACT24 = POT # "33rd" # PACT # "(PACT '24)"} % Oct 2024,
+
+% Source: https://acmsocc.org/
+@string{SoCC = SPACE # "ACM Symposium on Cloud Computing" # SPACE},
+@string{SoCC10 = POT # "1st" # SoCC # "(SoCC '10)"} % Jun 2010,
+@string{SoCC11 = POT # "2nd" # SoCC # "(SoCC '11)"} % Oct 2011,
+@string{SoCC12 = POT # "3rd" # SoCC # "(SoCC '12)"} % Oct 2012,
+@string{SoCC13 = POT # "4th" # SoCC # "(SoCC '13)"} % Oct 2013,
+@string{SoCC14 = POT # "5th" # SoCC # "(SoCC '14)"} % Nov 2014,
+@string{SoCC15 = POT # "6th" # SoCC # "(SoCC '15)"} % Aug 2015,
+@string{SoCC16 = POT # "7th" # SoCC # "(SoCC '16)"} % Oct 2016,
+@string{SoCC17 = POT # "8th" # SoCC # "(SoCC '17)"} % Sep 2017,
+@string{SoCC18 = POT # "9th" # SoCC # "(SoCC '18)"} % Oct 2018,
+@string{SoCC19 = POT # "10th" # SoCC # "(SoCC '19)"} % Nov 2019,
+@string{SoCC20 = POT # "11th" # SoCC # "(SoCC '20)"} % Oct 2020,
+@string{SoCC21 = POT # "12th" # SoCC # "(SoCC '21)"} % Nov 2021,
+@string{SoCC22 = POT # "13th" # SoCC # "(SoCC '22)"} % Nov 2022,
+@string{SoCC23 = POT # "14th" # SoCC # "(SoCC '23)"} % Oct 2023,
+
+
+% Source: https://conf.researchr.org/home/vee-2022
+@string{VEE = SPACE # "ACM SIGPLAN/SIGOPS International Conference on Virtual Execution Environments" # SPACE},
+@string{VEE05 = POT # "1st International Conference on Virtual Execution Environments (VEE '05)"} % Jun 2005,
+@string{VEE06 = POT # "2nd International Conference on Virtual Execution Environments (VEE '06)"} % Jun 2006,
+@string{VEE07 = POT # "3rd International Conference on Virtual Execution Environments (VEE '07)"} % Jun 2007,
+@string{VEE08 = POT # "4th International Conference on Virtual Execution Environments (VEE '08)"} % Mar 2008,
+@string{VEE09 = POT # "5th" # VEE # "(VEE '09)"} % Mar 2009,
+@string{VEE10 = POT # "6th" # VEE # "(VEE '10)"} % Mar 2010,
+@string{VEE11 = POT # "7th" # VEE # "(VEE '11)"} % Mar 2011,
+@string{VEE12 = POT # "8th" # VEE # "(VEE '12)"} % Mar 2012,
+@string{VEE13 = POT # "9th" # VEE # "(VEE '13)"} % Mar 2013,
+@string{VEE14 = POT # "10th" # VEE # "(VEE '14)"} % Mar 2014,
+@string{VEE15 = POT # "11th" # VEE # "(VEE '15)"} % Mar 2015,
+@string{VEE16 = POT # "12th" # VEE # "(VEE '16)"} % Apr 2016,
+@string{VEE17 = POT # "13th" # VEE # "(VEE '17)"} % Apr 2017,
+@string{VEE18 = POT # "14th" # VEE # "(VEE '18)"} % Mar 2018,
+@string{VEE19 = POT # "15th" # VEE # "(VEE '19)"} % Apr 2019,
+@string{VEE20 = POT # "16th" # VEE # "(VEE '20)"} % Mar 2020,
+@string{VEE21 = POT # "17th" # VEE # "(VEE '21)"} % Apr 2021,
+@string{VEE22 = POT # "18th" # VEE # "(VEE '22)"} % Mar 2022,
+
+% Source: https://dl.acm.org/conference/sc/proceedings
+@string{SCa = SPACE # "ACM/IEEE Conference on Supercomputing" # SPACE},
+@string{SCb = SPACE # "The International Conference for High Performance Computing, Networking, Storage and Analysis" # SPACE},
+@string{SC88 = POT # "1988" # SCa # "(SC '88)"} % Nov 1988,
+@string{SC89 = POT # "1989" # SCa # "(SC '89)"} % Nov 1989,
+@string{SC90 = POT # "1990" # SCa # "(SC '90)"} % Nov 1990,
+@string{SC91 = POT # "1991" # SCa # "(SC '91)"} % Nov 1991,
+@string{SC92 = POT # "1992" # SCa # "(SC '92)"} % Nov 1992,
+@string{SC93 = POT # "1993" # SCa # "(SC '93)"} % Nov 1993,
+@string{SC94 = POT # "1994" # SCa # "(SC '94)"} % Nov 1994,
+@string{SC95 = POT # "1995" # SCa # "(SC '95)"} % Nov 1995,
+@string{SC96 = POT # "1996" # SCa # "(SC '96)"} % Nov 1996,
+@string{SC97 = POT # "1997" # SCa # "(SC '97)"} % Nov 1997,
+@string{SC98 = POT # "1998" # SCa # "(SC '98)"} % Nov 1998,
+@string{SC99 = POT # "1999" # SCa # "(SC '99)"} % Nov 1999,
+@string{SC00 = POT # "2000" # SCa # "(SC '00)"} % Nov 2000,
+@string{SC01 = POT # "2001" # SCa # "(SC '01)"} % Nov 2001,
+@string{SC02 = POT # "2002" # SCa # "(SC '02)"} % Nov 2002,
+@string{SC03 = POT # "2003" # SCa # "(SC '03)"} % Nov 2003,
+@string{SC04 = POT # "2004" # SCa # "(SC '04)"} % Nov 2004,
+@string{SC05 = POT # "2005" # SCa # "(SC '05)"} % Nov 2005,
+@string{SC06 = POT # "2006" # SCa # "(SC '06)"} % Nov 2006,
+@string{SC07 = POT # "2007" # SCa # "(SC '07)"} % Nov 2007,
+@string{SC08 = POT # "2008" # SCa # "(SC '08)"} % Nov 2008,
+@string{SC09 = "Proceedings of SC09: " # SCb # "(SC '09)"} % Nov 2009,
+@string{SC10 = "Proceedings of SC10: " # SCb # "(SC '10)"} % Nov 2010,
+@string{SC11 = "Proceedings of SC11: " # SCb # "(SC '11)"} % Nov 2011,
+@string{SC12 = "Proceedings of SC12: " # SCb # "(SC '12)"} % Nov 2012,
+@string{SC13 = "Proceedings of SC13: " # SCb # "(SC '13)"} % Nov 2013,
+@string{SC14 = "Proceedings of SC14: " # SCb # "(SC '14)"} % Nov 2014,
+@string{SC15 = "Proceedings of SC15: " # SCb # "(SC '15)"} % Nov 2015,
+@string{SC16 = "Proceedings of SC16: " # SCb # "(SC '16)"} % Nov 2016,
+@string{SC17 = "Proceedings of SC17: " # SCb # "(SC '17)"} % Nov 2017,
+@string{SC18 = "Proceedings of SC18: " # SCb # "(SC '18)"} % Nov 2018,
+@string{SC19 = "Proceedings of SC19: " # SCb # "(SC '19)"} % Nov 2019,
+@string{SC20 = "Proceedings of SC20: " # SCb # "(SC '20)"} % Nov 2020,
+@string{SC21 = "Proceedings of SC21: " # SCb # "(SC '21)"} % Nov 2021,
+@string{SC22 = "Proceedings of SC22: " # SCb # "(SC '22)"} % Nov 2022,
+@string{SC23 = "Proceedings of SC23: " # SCb # "(SC '23)"} % Nov 2023,
+@string{SC24 = "Proceedings of SC24: " # SCb # "(SC '24)"} % Nov 2024,
+
+% Source: https://dblp.org/db/conf/hotos/index.html
+@string{HotOSa = SPACE # "Workshop On Workstation Operating Systems" # SPACE},
+@string{HotOSb = SPACE # "Workshop on Hot Topics in Operating Systems" # SPACE},
+@string{HotOS87 = POT # "1th" # HotOSa # "(WWOS '87)"} % Nov 1987,
+@string{HotOS89 = POT # "2nd" # HotOSa # "(WWOS '89)"} % Sep 1989,
+@string{HotOS92 = POT # "3rd" # HotOSa # "(WWOS '92)"} % Apr 1992,
+@string{HotOS93 = POT # "4th" # HotOSa # "(WWOS '93)"} % Oct 1993,
+@string{HotOS95 = POT # "5th" # HotOSb # "(HotOS-V)"} % May 1995,
+@string{HotOS97 = POT # "6th" # HotOSb # "(HotOS-VI)"} % May 1997,
+@string{HotOS99 = POT # "7th" # HotOSb # "(HotOS-VII)"} % Mar 1999,
+@string{HotOS01 = POT # "8th" # HotOSb # "(HotOS-VIII)"} % May 2001,
+@string{HotOS03 = POT # "9th" # HotOSb # "(HotOS-IX)"} % May 2003,
+@string{HotOS05 = POT # "10th" # HotOSb # "(HotOS-X)"} % Jun 2005,
+@string{HotOS07 = POT # "11th" # HotOSb # "(HotOS-XI)"} % May 2007,
+@string{HotOS09 = POT # "12th" # HotOSb # "(HotOS-XII)"} % May 2009,
+@string{HotOS11 = POT # "13th" # HotOSb # "(HotOS-XIII)"} % May 2011,
+@string{HotOS13 = POT # "14th" # HotOSb # "(HotOS-XIV)"} % May 2013,
+@string{HotOS15 = POT # "15th" # HotOSb # "(HotOS-XV)"} % May 2015,
+@string{HotOS17 = POT # "16th" # HotOSb # "(HotOS '17)"} % May 2017,
+@string{HotOS19 = POT # "17th" # HotOSb # "(HotOS '19)"} % May 2019,
+@string{HotOS21 = POT # "18th" # HotOSb # "(HotOS '21)"} % Jun 2021,
+@string{HotOS23 = POT # "19th" # HotOSb # "(HotOS '23)"} % Jun 2023,
+
+% Source: https://www.usenix.org/conferences/byname/146
+@string{FAST = SPACE # "USENIX Conference on File and Storage Technologies" # SPACE},
+@string{FAST02 = POT # "Conference on File and Storage Technologies (FAST '02)"} % Jan 2002,
+@string{FAST03 = POT # "2nd" # FAST # "(FAST '03)"} % Mar 2003,
+@string{FAST04 = POT # "3rd" # FAST # "(FAST '04)"} % Mar 2004,
+@string{FAST05 = POT # "4th" # FAST # "(FAST '05)"} % Dec 2005,
+@string{FAST07 = POT # "5th" # FAST # "(FAST '07)"} % Feb 2007,
+@string{FAST08 = POT # "6th" # FAST # "(FAST '08)"} % Feb 2008,
+@string{FAST09 = POT # "7th" # FAST # "(FAST '09)"} % Feb 2009,
+@string{FAST10 = POT # "8th" # FAST # "(FAST '10)"} % Feb 2010,
+@string{FAST11 = POT # "9th" # FAST # "(FAST '11)"} % Feb 2011,
+@string{FAST12 = POT # "10th" # FAST # "(FAST '12)"} % Feb 2012,
+@string{FAST13 = POT # "11th" # FAST # "(FAST '13)"} % Feb 2013,
+@string{FAST14 = POT # "12th" # FAST # "(FAST '14)"} % Feb 2014,
+@string{FAST15 = POT # "13th" # FAST # "(FAST '15)"} % Feb 2015,
+@string{FAST16 = POT # "14th" # FAST # "(FAST '16)"} % Feb 2016,
+@string{FAST17 = POT # "15th" # FAST # "(FAST '17)"} % Feb 2017,
+@string{FAST18 = POT # "16th" # FAST # "(FAST '18)"} % Feb 2018,
+@string{FAST19 = POT # "17th" # FAST # "(FAST '19)"} % Feb 2019,
+@string{FAST20 = POT # "18th" # FAST # "(FAST '20)"} % Feb 2020,
+@string{FAST21 = POT # "19th" # FAST # "(FAST '21)"} % Feb 2021,
+@string{FAST22 = POT # "20th" # FAST # "(FAST '22)"} % Feb 2022,
+@string{FAST23 = POT # "21st" # FAST # "(FAST '23)"} % Feb 2023,
+@string{FAST24 = POT # "22nd" # FAST # "(FAST '24)"} % Feb 2024,
+
+% Source: https://iscaconf.org/, https://dl.acm.org/conference/isca/proceedings
+@string{ISCA = SPACE # "Annual International Symposium on Computer Architecture" # SPACE},
+@string{ISCA73 = POT # "1st Annual Symposium on Computer Architecture (ISCA-1)"} % Dec 1973,
+@string{ISCA75 = POT # "2nd Annual Symposium on Computer Architecture (ISCA-2)"} % Jan 1975,
+@string{ISCA76 = POT # "3rd Annual Symposium on Computer Architecture (ISCA-3)"} % Jan 1976,
+@string{ISCA77 = POT # "4th Annual Symposium on Computer Architecture (ISCA-4)"} % Mar 1977,
+@string{ISCA78 = POT # "5th Annual Symposium on Computer Architecture (ISCA-5)"} % Apr 1978,
+@string{ISCA79 = POT # "6th Annual Symposium on Computer Architecture (ISCA-6)"} % Apr 1979,
+@string{ISCA80 = POT # "7th Annual Symposium on Computer Architecture (ISCA-7)"} % May 1980,
+@string{ISCA81 = POT # "8th Annual Symposium on Computer Architecture (ISCA-8)"} % May 1981,
+@string{ISCA82 = POT # "9th Annual Symposium on Computer Architecture (ISCA-9)"} % Apr 1982,
+@string{ISCA83 = POT # "10th" # ISCA # "(ISCA-10)"} % Jun 1983,
+@string{ISCA84 = POT # "11th" # ISCA # "(ISCA-11)"} % Jun 1984,
+@string{ISCA85 = POT # "12th" # ISCA # "(ISCA-12)"} % Jun 1985,
+@string{ISCA86 = POT # "13th" # ISCA # "(ISCA-13)"} % Jun 1986,
+@string{ISCA87 = POT # "14th" # ISCA # "(ISCA-14)"} % Jun 1987,
+@string{ISCA88 = POT # "15th" # ISCA # "(ISCA-15)"} % Jun 1988,
+@string{ISCA89 = POT # "16th" # ISCA # "(ISCA-16)"} % Apr 1989,
+@string{ISCA90 = POT # "17th" # ISCA # "(ISCA-17)"} % May 1990,
+@string{ISCA91 = POT # "18th" # ISCA # "(ISCA-18)"} % May 1991,
+@string{ISCA92 = POT # "19th" # ISCA # "(ISCA-19)"} % May 1992,
+@string{ISCA93 = POT # "20th" # ISCA # "(ISCA-20)"} % May 1993,
+@string{ISCA94 = POT # "21st" # ISCA # "(ISCA-21)"} % Apr 1994,
+@string{ISCA95 = POT # "22rd" # ISCA # "(ISCA-22)"} % Jun 1995,
+@string{ISCA96 = POT # "23nd" # ISCA # "(ISCA-23)"} % May 1996,
+@string{ISCA97 = POT # "24th" # ISCA # "(ISCA-24)"} % Jun 1997,
+@string{ISCA98 = POT # "25th" # ISCA # "(ISCA-25)"} % Jun 1998,
+@string{ISCA99 = POT # "26th" # ISCA # "(ISCA-26)"} % May 1999,
+@string{ISCA00 = POT # "27th" # ISCA # "(ISCA-27)"} % Jun 2000,
+@string{ISCA01 = POT # "28th" # ISCA # "(ISCA-28)"} % Jun 2001,
+@string{ISCA02 = POT # "29th" # ISCA # "(ISCA-29)"} % May 2002,
+@string{ISCA03 = POT # "30th" # ISCA # "(ISCA-30)"} % Jun 2003,
+@string{ISCA04 = POT # "31st" # ISCA # "(ISCA-31)"} % Jun 2004,
+@string{ISCA05 = POT # "32rd" # ISCA # "(ISCA-32)"} % Jun 2005,
+@string{ISCA06 = POT # "33nd" # ISCA # "(ISCA-33)"} % Jun 2006,
+@string{ISCA07 = POT # "34th" # ISCA # "(ISCA-34)"} % Jun 2007,
+@string{ISCA08 = POT # "35th" # ISCA # "(ISCA-35)"} % Jun 2008,
+@string{ISCA09 = POT # "36th" # ISCA # "(ISCA-36)"} % Jun 2009,
+@string{ISCA10 = POT # "37th" # ISCA # "(ISCA-37)"} % Jun 2010,
+@string{ISCA11 = POT # "38th" # ISCA # "(ISCA-38)"} % Jun 2011,
+@string{ISCA12 = POT # "39th" # ISCA # "(ISCA-39)"} % Jun 2012,
+@string{ISCA13 = POT # "40th" # ISCA # "(ISCA-40)"} % Jun 2013,
+@string{ISCA14 = POT # "41st" # ISCA # "(ISCA-41)"} % Jun 2014,
+@string{ISCA15 = POT # "42rd" # ISCA # "(ISCA-42)"} % Jun 2015,
+@string{ISCA16 = POT # "43nd" # ISCA # "(ISCA-43)"} % Jun 2016,
+@string{ISCA17 = POT # "44th" # ISCA # "(ISCA-44)"} % Jun 2017,
+@string{ISCA18 = POT # "45th" # ISCA # "(ISCA-45)"} % Jun 2018,
+@string{ISCA19 = POT # "46th" # ISCA # "(ISCA-46)"} % Jun 2019,
+@string{ISCA20 = POT # "47th" # ISCA # "(ISCA-47)"} % Jun 2020,
+@string{ISCA21 = POT # "48th" # ISCA # "(ISCA-48)"} % Jun 2021,
+@string{ISCA22 = POT # "49th" # ISCA # "(ISCA-49)"} % Jun 2022,
+@string{ISCA23 = POT # "50th" # ISCA # "(ISCA-50)"} % Jun 2023,
+@string{ISCA24 = POT # "51st" # ISCA # "(ISCA-51)"} % Jun 2024,
+
+% Source: https://hpca-conf.org/
+@string{HPCA = SPACE # "IEEE International Symposium on High-Performance Computer Architecture" # SPACE},
+@string{HPCA95 = POT # "1st" # HPCA # "(HPCA-1)"} % Jan 1995,
+@string{HPCA96 = POT # "2nd" # HPCA # "(HPCA-2)"} % Feb 1996,
+@string{HPCA97 = POT # "3rd" # HPCA # "(HPCA-3)"} % Feb 1997,
+@string{HPCA98 = POT # "4th" # HPCA # "(HPCA-4)"} % Jan 1998,
+@string{HPCA99 = POT # "5th" # HPCA # "(HPCA-5)"} % Jan 1999,
+@string{HPCA00 = POT # "6th" # HPCA # "(HPCA-6)"} % Jan 2000,
+@string{HPCA01 = POT # "7th" # HPCA # "(HPCA-7)"} % Jan 2001,
+@string{HPCA02 = POT # "8th" # HPCA # "(HPCA-8)"} % Feb 2002,
+@string{HPCA03 = POT # "9th" # HPCA # "(HPCA-9)"} % Feb 2003,
+@string{HPCA04 = POT # "10th" # HPCA # "(HPCA-10)"} % Feb 2004,
+@string{HPCA05 = POT # "11th" # HPCA # "(HPCA-11)"} % Feb 2005,
+@string{HPCA06 = POT # "12th" # HPCA # "(HPCA-12)"} % Feb 2006,
+@string{HPCA07 = POT # "13th" # HPCA # "(HPCA-13)"} % Feb 2007,
+@string{HPCA08 = POT # "14th" # HPCA # "(HPCA-14)"} % Feb 2008,
+@string{HPCA09 = POT # "15th" # HPCA # "(HPCA-15)"} % Feb 2009,
+@string{HPCA10 = POT # "16th" # HPCA # "(HPCA-16)"} % Jan 2010,
+@string{HPCA11 = POT # "17th" # HPCA # "(HPCA-17)"} % Feb 2011,
+@string{HPCA12 = POT # "18th" # HPCA # "(HPCA-18)"} % Feb 2012,
+@string{HPCA13 = POT # "19th" # HPCA # "(HPCA-19)"} % Feb 2013,
+@string{HPCA14 = POT # "20th" # HPCA # "(HPCA-20)"} % Feb 2014,
+@string{HPCA15 = POT # "21st" # HPCA # "(HPCA-21)"} % Feb 2015,
+@string{HPCA16 = POT # "22nd" # HPCA # "(HPCA-22)"} % Mar 2016,
+@string{HPCA17 = POT # "23rd" # HPCA # "(HPCA-23)"} % Feb 2017,
+@string{HPCA18 = POT # "24th" # HPCA # "(HPCA-24)"} % Feb 2018,
+@string{HPCA19 = POT # "25th" # HPCA # "(HPCA-25)"} % Feb 2019,
+@string{HPCA20 = POT # "26th" # HPCA # "(HPCA-26)"} % Feb 2020,
+@string{HPCA21 = POT # "27th" # HPCA # "(HPCA-27)"} % Feb 2021,
+@string{HPCA22 = POT # "28th" # HPCA # "(HPCA-28)"} % Apr 2022,
+@string{HPCA23 = POT # "29th" # HPCA # "(HPCA-29)"} % Feb 2023,
+@string{HPCA24 = POT # "30th" # HPCA # "(HPCA-30)"} % Mar 2024,
+
+% Source: https://microarch.org/past.html, https://dl.acm.org/conference/micro/proceedings
+@string{MICROa = SPACE # "Annual Workshop on Microprogramming" # SPACE},
+@string{MICROb = SPACE # "Annual International Symposium on Microarchitecture" # SPACE},
+@string{MICROc = SPACE # "Annual IEEE/ACM International Symposium on Microarchitecture" # SPACE},
+@string{MICRO68 = "Conference Record of The First ACM Workshop on Microprogramming (MICRO-1)"} % Feb 1969,
+@string{MICRO69 = "Conference Record of The Second" # MICROa # "(MICRO-2)"} % Oct 1969,
+@string{MICRO70 = "Conference Record of The Third" # MICROa # "(MICRO-3)"} % Oct 1970,
+@string{MICRO71 = "Conference Record of The Fourth" # MICROa # "(MICRO-4)"} % Sep 1971,
+@string{MICRO72 = "Conference Record of The 5th" # MICROa # "(MICRO-5)"} % Sep 1972,
+@string{MICRO73 = "Conference Record of The 6th" # MICROa # "(MICRO-6)"} % Sep 1973,
+@string{MICRO74 = "Conference Record of The 7th" # MICROa # "(MICRO-7)"} % Sep 1974,
+@string{MICRO75 = POT # "8th" # MICROa # "(MICRO-8)"} % Sep 1975,
+@string{MICRO76 = POT # "9th" # MICROa # "(MICRO-9)"} % Sep 1976,
+@string{MICRO77 = POT # "10th" # MICROa # "(MICRO-10)"} % Oct 1977,
+@string{MICRO78 = POT # "11th" # MICROa # "(MICRO-11)"} % Nov 1978,
+@string{MICRO79 = POT # "12th" # MICROa # "(MICRO-12)"} % Nov 1979,
+@string{MICRO80 = POT # "13th" # MICROa # "(MICRO-13)"} % Nov 1980,
+@string{MICRO81 = POT # "14th" # MICROa # "(MICRO-14)"} % Dec 1981,
+@string{MICRO82 = POT # "15th" # MICROa # "(MICRO-15)"} % Oct 1982,
+@string{MICRO83 = POT # "16th" # MICROa # "(MICRO-16)"} % Mar 1983,
+@string{MICRO84 = POT # "17th" # MICROa # "(MICRO-17)"} % Dec 1984,
+@string{MICRO85 = POT # "18th" # MICROa # "(MICRO-18)"} % Dec 1985,
+@string{MICRO86 = POT # "19th" # MICROa # "(MICRO-19)"} % Oct 1986,
+@string{MICRO87 = POT # "20th" # MICROa # "(MICRO-20)"} % Dec 1987,
+@string{MICRO88 = POT # "21st Annual Workshop on Microprogramming and Microarchitecture (MICRO-21)"} % Nov 1988,
+@string{MICRO89 = POT # "22nd Annual Workshop on Microprogramming and Microarchitecture (MICRO-22)"} % Aug 1989,
+@string{MICRO90 = POT # "23rd Annual Workshop and Symposium on Microprogramming and Microarchitecture (MICRO-23)"} % Nov 1990,
+@string{MICRO91 = POT # "24th" # MICROb # "(MICRO-24)"} % Sep 1991,
+@string{MICRO92 = POT # "25th" # MICROb # "(MICRO-25)"} % Dec 1992,
+@string{MICRO93 = POT # "26th" # MICROb # "(MICRO-26)"} % Dec 1993,
+@string{MICRO94 = POT # "27th" # MICROb # "(MICRO-27)"} % Nov 1994,
+@string{MICRO95 = POT # "28th" # MICROc # "(MICRO-28)"} % Nov 1995,
+@string{MICRO96 = POT # "29th" # MICROc # "(MICRO-29)"} % Dec 1996,
+@string{MICRO97 = POT # "30th" # MICROc # "(MICRO-30)"} % Dec 1997,
+@string{MICRO98 = POT # "31st" # MICROc # "(MICRO-31)"} % Nov 1998,
+@string{MICRO99 = POT # "32nd" # MICROc # "(MICRO-32)"} % Nov 1999,
+@string{MICRO00 = POT # "33rd" # MICROc # "(MICRO-33)"} % Dec 2000,
+@string{MICRO01 = POT # "34th" # MICROc # "(MICRO-34)"} % Dec 2001,
+@string{MICRO02 = POT # "35th" # MICROc # "(MICRO-35)"} % Nov 2002,
+@string{MICRO03 = POT # "36th" # MICROc # "(MICRO-36)"} % Dec 2003,
+@string{MICRO04 = POT # "37th" # MICROc # "(MICRO-37)"} % Dec 2004,
+@string{MICRO05 = POT # "38th" # MICROc # "(MICRO-38)"} % Nov 2005,
+@string{MICRO06 = POT # "39th" # MICROc # "(MICRO-39)"} % Dec 2006,
+@string{MICRO07 = POT # "40th" # MICROc # "(MICRO-40)"} % Dec 2007,
+@string{MICRO08 = POT # "41st" # MICROc # "(MICRO-41)"} % Nov 2008,
+@string{MICRO09 = POT # "42nd" # MICROc # "(MICRO-42)"} % Dec 2009,
+@string{MICRO10 = POT # "43rd" # MICROc # "(MICRO-43)"} % Dec 2010,
+@string{MICRO11 = POT # "44th" # MICROc # "(MICRO-44)"} % Dec 2011,
+@string{MICRO12 = POT # "45th" # MICROc # "(MICRO-45)"} % Dec 2012,
+@string{MICRO13 = POT # "46th" # MICROc # "(MICRO-46)"} % Dec 2013,
+@string{MICRO14 = POT # "47th" # MICROc # "(MICRO-47)"} % Dec 2014,
+@string{MICRO15 = POT # "48th" # MICROc # "(MICRO-48)"} % Dec 2015,
+@string{MICRO16 = POT # "49th" # MICROc # "(MICRO-49)"} % Oct 2016,
+@string{MICRO17 = POT # "50th" # MICROc # "(MICRO-50)"} % Oct 2017,
+@string{MICRO18 = POT # "51st" # MICROc # "(MICRO-51)"} % Oct 2018,
+@string{MICRO19 = POT # "52nd" # MICROc # "(MICRO-52)"} % Oct 2019,
+@string{MICRO20 = POT # "53rd" # MICROc # "(MICRO-53)"} % Oct 2020,
+@string{MICRO21 = POT # "54th" # MICROc # "(MICRO-54)"} % Oct 2021,
+@string{MICRO22 = POT # "55th" # MICROc # "(MICRO-55)"} % Oct 2022,
+@string{MICRO23 = POT # "56th" # MICROc # "(MICRO-56)"} % Oct 2023,
+@string{MICRO24 = POT # "57th" # MICROc # "(MICRO-57)"} % Nov 2024,
+
+% Source: https://www.usenix.org/conferences/byname/178
+@string{NSDI = SPACE # "USENIX Symposium on Networked Systems Design and Implementation" # SPACE},
+@string{NSDI04 = POT # "First Symposium on Networked Systems Design and Implementation (NSDI '04)"} % Mar 2004,
+@string{NSDI05 = POT # "2nd Symposium on Networked Systems Design and Implementation (NSDI '05)"} % May 2005,
+@string{NSDI06 = POT # "3rd Symposium on Networked Systems Design and Implementation (NSDI '06)"} % May 2006,
+@string{NSDI07 = POT # "4th" # NSDI # "(NSDI '07)"} % Apr 2007,
+@string{NSDI08 = POT # "5th" # NSDI # "(NSDI '08)"} % Apr 2008,
+@string{NSDI09 = POT # "6th" # NSDI # "(NSDI '09)"} % Apr 2009,
+@string{NSDI10 = POT # "7th" # NSDI # "(NSDI '10)"} % Apr 2010,
+@string{NSDI11 = POT # "8th" # NSDI # "(NSDI '11)"} % Mar 2011,
+@string{NSDI12 = POT # "9th" # NSDI # "(NSDI '12)"} % Apr 2012,
+@string{NSDI13 = POT # "10th" # NSDI # "(NSDI '13)"} % Apr 2013,
+@string{NSDI14 = POT # "11th" # NSDI # "(NSDI '14)"} % Apr 2014,
+@string{NSDI15 = POT # "12th" # NSDI # "(NSDI '15)"} % May 2015,
+@string{NSDI16 = POT # "13th" # NSDI # "(NSDI '16)"} % Mar 2016,
+@string{NSDI17 = POT # "14th" # NSDI # "(NSDI '17)"} % Mar 2017,
+@string{NSDI18 = POT # "15th" # NSDI # "(NSDI '18)"} % Apr 2018,
+@string{NSDI19 = POT # "16th" # NSDI # "(NSDI '19)"} % Feb 2019,
+@string{NSDI20 = POT # "17th" # NSDI # "(NSDI '20)"} % Feb 2020,
+@string{NSDI21 = POT # "18th" # NSDI # "(NSDI '21)"} % Apr 2021,
+@string{NSDI22 = POT # "19th" # NSDI # "(NSDI '22)"} % Apr 2022,
+@string{NSDI23 = POT # "20th" # NSDI # "(NSDI '23)"} % Apr 2023,
+@string{NSDI24 = POT # "21st" # NSDI # "(NSDI '24)"} % Apr 2024,
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+## SELF REFERENCES
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@inproceedings{self:dmt,
+	author = {Jiyuan Zhang and Weiwei Jia and Siyuan Chai and Peizhe Liu and Jongyul Kim and Tianyin Xu},
+	title = {{Direct Memory Translation for Virtualized Clouds}},
+	booktitle = ASPLOS24,
+	year = 2024,
+	month = APR,
+}
+
+@inproceedings{self:hugegpt,
+	author = {Jia, Weiwei and Zhang, Jiyuan and Shan, Jianchen and Du, Yiming and Ding, Xiaoning and Xu, Tianyin},
+	title = {{HugeGPT: Storing Guest Page Tables on Host Huge Pages to Accelerate Address Translation}},
+	booktitle = PACT23,
+	year = 2023,
+	month = OCT,
+}
+
+@inproceedings{self:gemini,
+	title = {{Making Dynamic Page Coalescing Effective on Virtualized Clouds}},
+	author = {Jia, Weiwei and Zhang, Jiyuan and Shan, Jianchen and Ding, Xiaoning},
+	booktitle = EuroSys23,
+	year = 2023,
+	month = MAY,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+## COMMON
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@misc{intel:man,
+	title = {{Intel\textsuperscript{\textregistered} 64 and IA-32 Architectures Developer's Manual}},
+	howpublished = "\url{https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html}",
+	year = 2024,
+	month = MAR,
+}
+
+@misc{amd:man,
+	title = {{AMD64 Architecture Programmer's Manual}},
+	howpublished = "\url{https://www.amd.com/content/dam/amd/en/documents/processor-tech-docs/programmer-references/40332.pdf}",
+	year = 2023,
+	month = JUN,
+}
+
+@misc{aarch64:man,
+	title = {{Arm\textsuperscript{\textregistered} Architecture Reference Manual for A-profile architecture}},
+	howpublished = "\url{https://developer.arm.com/documentation/ddi0487/latest/}",
+	year = 2024,
+	month = MAR,
+}
+
+@misc{ia64:man,
+	title = {{Intel\textsuperscript{\textregistered} IA-64 Architecture Software Developer's Manual}},
+	howpublished = "\url{http://refspecs.linux-foundation.org/IA64-softdevman-vol2.pdf}",
+	year = 2000,
+	month = JUL,
+}
+
+@misc{ppc64:man,
+	title = {{Power ISA\textsuperscript{\texttrademark} Version 3.1B}},
+	howpublished = "\url{https://openpowerfoundation.org/specifications/isa/}",
+	year = 2021,
+	month = SEP,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+## HUGE PAGE / THP
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@inproceedings{panwar2019hawkeye,
+	title = {{HawkEye: Efficient Fine-grained OS Support for Huge Pages}},
+	author = {Panwar, Ashish and Bansal, Sorav and Gopinath, K},
+	booktitle = ASPLOS19,
+	month = APR,
+	year = 2019,
+}
+
+@inproceedings{guo2015proactively,
+	title = {{Proactively Breaking Large Pages to Improve Memory Overcommitment Performance in VMware ESXi}},
+	author = {Guo, Fei and Kim, Seongbeom and Baskakov, Yury and Banerjee, Ishan},
+	booktitle = VEE15,
+	month = MAR,
+	year = 2015,
+}
+
+@inproceedings{navarro2002practical,
+	title = {{Practical, Transparent Operating System Support for Superpages}},
+	author = {Navarro, Juan and Iyer, Sitararn and Druschel, Peter and Cox, Alan},
+	booktitle = OSDI02,
+	month = DEC,
+	year = 2002,
+}
+
+@inproceedings{pham2015large,
+	title = {{Large Pages and Lightweight Memory Management in Virtualized Environments: Can You Have it Both Ways?}},
+	author = {Pham, Binh and Vesel{\`y}, J{\'a}n and Loh, Gabriel H and Bhattacharjee, Abhishek},
+	booktitle = MICRO15,
+	month = DEC,
+	year = 2015,
+}
+
+@inproceedings{panwar2018making,
+	title = {{Making Huge Pages Actually Useful}},
+	author = {Panwar, Ashish and Prasad, Aravinda and Gopinath, K},
+	booktitle = ASPLOS18,
+	month = MAR,
+	year = 2018,
+}
+
+@inproceedings{zhu2020comprehensive,
+	title = {{A Comprehensive Analysis of Superpage Management Mechanisms and Policies}},
+	author = {Zhu, Weixi and Cox, Alan L and Rixner, Scott},
+	booktitle = ATC20,
+	month = JUL,
+	year = 2020,
+}
+
+@inproceedings{hunter2021beyond,
+	title = {{Beyond malloc efficiency to fleet efficiency: a hugepage-aware memory allocator}},
+	author = {Hunter, AH and Kennelly, Chris and Turner, Paul and Gove, Darryl and Moseley, Tipp and Ranganathan, Parthasarathy},
+	booktitle = OSDI21,
+	month = JUL,
+	year = 2021,
+}
+
+@inproceedings{maas2021adaptive,
+	title = {{Adaptive Huge-Page Subrelease for Non-moving Memory Allocators in Warehouse-Scale Computers}},
+	author = {Maas, Martin and Kennelly, Chris and Nguyen, Khanh and Gove, Darryl and McKinley, Kathryn S and Turner, Paul},
+	booktitle = {Proceedings of the 2021 ACM SIGPLAN International Symposium on Memory Management (ISMM '21)},
+	month = JUN,
+	year = 2021,
+}
+
+@inproceedings{kwon2016coordinated,
+	title = {{Coordinated and Efficient Huge Page Management with Ingens}},
+	author = {Kwon, Youngjin and Yu, Hangchen and Peter, Simon and Rossbach, Christopher J and Witchel, Emmett},
+	booktitle = OSDI16,
+	year = 2016,
+	month = NOV,
+}
+
+% TODO
+@inproceedings{Dougan:1999,
+ author = {Dougan, Cort and Mackerras, Paul and Yodaiken, Victor},
+ title = "{Optimizing the Idle Task and Other MMU Tricks}",
+ booktitle = OSDI99,
+ year = 1999,
+ month = FEB,
+}
+
+% TODO
+@inproceedings{zuo2018,
+	title = {{Write-Optimized and High-Performance Hashing Index Scheme for Persistent Memory}},
+	author = {Pengfei Zuo and Yu Hua and Jie Wu},
+	booktitle = OSDI18,
+	year = 2018,
+	month = OCT,
+}
+
+@inproceedings{subramanian1998implementation,
+	title = {{Implementation of Multiple Pagesize Support in HP-UX}},
+	author = {Subramanian, Indira and Mather, Clifford and Peterson, Kurt and Raghunath, Balakrishna},
+	booktitle = ATC98,
+	month = JUN,
+	year = 1998,
+}
+
+@inproceedings{ganapathy1998general,
+	title = {{General Purpose Operating System Support for Multiple Page Sizes}},
+	author = {Ganapathy, Narayanan and Schimmel, Curt},
+	booktitle = ATC98,
+	month = JUN,
+	year = 1998,
+}
+
+@inproceedings{talluri1992tradeoffs,
+	title = {{Tradeoffs in Supporting Two Page Sizes}},
+	author = {Talluri, Madhusudhan and Kong, Shing and Hill, Mark D and Patterson, David A},
+	booktitle = ISCA92,
+	month = JUN,
+	year = 1992,
+}
+
+@inproceedings{gaud2014large,
+	title = {{Large Pages May Be Harmful on NUMA Systems}},
+	author = {Fabien Gaud and Baptiste Lepers and Jeremie Decouchant and Justin Funston and Alexandra Fedorova and Vivien Quema},
+	booktitle = ATC14,
+	month = JUN,
+	year = 2014,
+}
+
+@inproceedings{choi2019hpanal,
+	title = {{HPanal: A Framework for Analyzing Tradeoffs of Huge Pages}},
+	author = {Choi, Gunhee and Son, Juhyung and Choi, Jongmoo and Cho, Seong-je and Won, Youjip},
+	booktitle = {Proceedings of the 34th ACM/SIGAPP Symposium on Applied Computing (SAC '19)},
+	month = APR,
+	year = 2019,
+}
+
+@misc{redis:thp,
+	title = {{Diagnosing latency issues}},
+	howpublished = "\url{https://redis.io/topics/latency}",
+	year = 2024,
+	month = APR,
+	author = {{Redis}},
+}
+
+@misc{couchbase:thp,
+	title = {{Disabling Transparent Huge Pages (THP)}},
+	howpublished = "\url{https://docs.couchbase.com/server/5.5/install/thp-disable.html}",
+	year = 2024,
+	month = APR,
+	author = {{Couchbase}},
+}
+
+@misc{mongo:thp,
+	title = {{Disable Transparent Huge Pages (THP)}},
+	howpublished = "\url{https://docs.mongodb.com/manual/tutorial/transparent-huge-pages/}",
+	year = 2024,
+	month = APR,
+	author = {{MongoDB}},
+}
+
+@misc{sap:hana:thp,
+	title = {{Monitoring and troubleshooting from HANA side}},
+	howpublished = "\url{https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-monitor-troubleshoot}",
+	year = 2024,
+	month = APR,
+	author = {{Microsoft Azure}},
+}
+
+@misc{cloudera:hadoop:thp,
+	title = {{Disabling Transparent Hugepages (THP)}},
+	howpublished = "\url{https://docs.cloudera.com/cdp-private-cloud-base/7.1.9/managing-clusters/topics/cm-disabling-transparent-hugepages.html}",
+	year = 2024,
+	month = APR,
+	author = {{Cloudera}},
+}
+
+@misc{hugepage:not,
+	title = {{Transparent Huge Pages (THP) may cause high CPU utilization and performance issues on IBM Smart Analytics System 5600 environments using SUSE Linux Enterprise Server 11 SP2}},
+	howpublished = "\url{http://www-01.ibm.com/support/docview.wss?uid = swg21677458}",
+	year = 2024,
+	month = APR,
+	author = {{IBM}},
+}
+
+@inproceedings{zhao2023contiguitas,
+	author = {Zhao, Kaiyang and Xue, Kaiwen and Wang, Ziqi and Schatzberg, Dan and Yang, Leon and Manousis, Antonis and Weiner, Johannes and Van Riel, Rik and Sharma, Bikash and Tang, Chunqiang and Skarlatos, Dimitrios},
+	title = {{Contiguitas: The Pursuit of Physical Memory Contiguity in Datacenters}},
+	booktitle = ISCA23,
+	year = 2023,
+	month = JUN,
+}
+
+@misc{qemu:thp,
+	title = {{Benchmarking transparent versus 1GiB static huge page performance in Linux virtual machines}},
+	howpublished = "\url{https://developers.redhat.com/blog/2021/04/27/benchmarking-transparent-versus-1gib-static-huge-page-performance-in-linux-virtual-machines}",
+	author = {Kevin Buettner},
+	month = APR,
+	year = 2021,
+}
+
+@misc{ksm:thp,
+	title = {{General system settings}},
+	howpublished = "\url{https://www.ibm.com/docs/en/linux-on-systems?topic = tuning-general-system-settings}",
+	author = {{IBM}},
+	month = NOV,
+	year = 2023,
+}
+
+@misc{linux:thp,
+	title = {{Transparent Hugepage Support}},
+	howpublished = "\url{https://docs.kernel.org/admin-guide/mm/transhuge.html}",
+	month = DEC,
+	year = 2023,
+}
+
+@inproceedings{park2020perforated,
+	title = {{Perforated Page: Supporting Fragmented Memory Allocation for Large Pages}},
+	author = {Park, Chang Hyun and Cha, Sanghoon and Kim, Bokyeong and Kwon, Youngjin and Black-Schaffer, David and Huh, Jaehyuk},
+	booktitle = ISCA20,
+	year = 2020,
+	month = JUN,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+## TLB / PWC
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@techreport{pham2015using,
+	title = {{Using TLB Speculation to Overcome Page Splintering in Virtual Machines}},
+	author = {Pham, Binh and Vesely, Jan and Loh, Gabriel H and Bhattacharjee, Abhishek},
+	institution = {Rutgers University},
+	number = {DCS-TR-713},
+	month = MAR,
+	year = 2015,
+}
+
+@inproceedings{ryoo2017rethinking,
+	title = {{Rethinking TLB Designs in Virtualized Environments: A Very Large Part-of-Memory TLB}},
+	author = {Ryoo, Jee Ho and Gulur, Nagendra and Song, Shuang and John, Lizy K},
+	booktitle = ISCA17,
+	month = JUN,
+	year = 2017,
+}
+
+@inproceedings{pham2012colt,
+	title = {{CoLT: Coalesced Large-Reach TLBs}},
+	author = {Pham, Binh and Vaidyanathan, Viswanathan and Jaleel, Aamer and Bhattacharjee, Abhishek},
+	booktitle = MICRO12,
+	month = DEC,
+	year = 2012,
+}
+
+@inproceedings{pham2014increasing,
+	title = {{Increasing TLB Reach by Exploiting Clustering in Page Translations}},
+	author = {Pham, Binh and Bhattacharjee, Abhishek and Eckert, Yasuko and Loh, Gabriel H},
+	booktitle = HPCA14,
+	month = FEB,
+	year = 2014,
+}
+
+@inproceedings{park2017hybrid,
+	title = {{Hybrid TLB Coalescing: Improving TLB Translation Coverage under Diverse Fragmented Memory Allocations}},
+	author = {Park, Chang Hyun and Heo, Taekyung and Jeong, Jungi and Huh, Jaehyuk},
+	booktitle = ISCA17,
+	month = JUN,
+	year = 2017,
+}
+
+@inproceedings{barr2010translation,
+	title = {{Translation Caching: Skip, Don't Walk (the Page Table)}},
+	author = {Barr, Thomas W and Cox, Alan L and Rixner, Scott},
+	booktitle = ISCA10,
+	month = JUN,
+	year = 2010,
+}
+
+@inproceedings{dashti2013traffic,
+	title = {{Traffic Management: A Holistic Approach to Memory Placement on NUMA Systems}},
+	author = {Dashti, Mohammad and Fedorova, Alexandra and Funston, Justin and Gaud, Fabien and Lachaize, Renaud and Lepers, Baptiste and Quema, Vivien and Roth, Mark},
+	booktitle = ASPLOS13,
+	month = MAR,
+	year = 2013,
+}
+
+@inproceedings{alverti2020enhancing,
+	title = {{Enhancing and Exploiting Contiguity for Fast Memory Virtualization}},
+	author = {Alverti, Chloe and Psomadakis, Stratos and Karakostas, Vasileios and Gandhi, Jayneel and Nikas, Konstantinos and Goumas, Georgios and Koziris, Nectarios},
+	booktitle = ISCA20,
+	year = 2020,
+	month = JUN,
+}
+
+@inproceedings{bhattacharjee2013lmm,
+	author = {Bhattacharjee, Abhishek},
+	title = {{Large-reach Memory Management Unit Caches}},
+	booktitle = MICRO13,
+	year = 2013,
+	month = DEC,
+}
+
+@inproceedings{barr2011spectlb,
+	title={{SpecTLB: A Mechanism for Speculative Address Translation}},
+	author={Barr, Thomas W. and Cox, Alan L. and Rixner, Scott},
+	booktitle = ISCA11,
+	year = 2011,
+	month = SEP,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+## PAGE TABLE / PAGE WALK
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@misc{intel:5level,
+	title = {{5-Level Paging and 5-Level EPT White Paper}},
+	howpublished = "\url{https://software.intel.com/content/www/us/en/develop/download/5-level-paging-and-5-level-ept-white-paper.html}",
+	year = 2017,
+	month = MAY,
+}
+
+@misc{intel:5level:implement,
+	title = {{Introduction to 5-Level Paging in 3rd Gen Intel Xeon Scalable Processors with Linux}},
+	howpublished = "\url{https://lenovopress.lenovo.com/lp1468.pdf}",
+	year = 2021,
+	month = MAY,
+	author = {Ye, Huaisheng},
+}
+
+@inproceedings{margaritov2019asap,
+	title = {{Prefetched Address Translation}},
+	author = {Margaritov, Artemiy and Ustiugov, Dmitrii and Bugnion, Edouard and Grot, Boris},
+	booktitle = MICRO19,
+	month = OCT,
+	year = 2019,
+}
+
+@inproceedings{achermann2020mitosis,
+	title = {{Mitosis: Transparently Self-Replicating Page-Tables for Large-Memory Machines}},
+	author = {Achermann, Reto and Panwar, Ashish and Bhattacharjee, Abhishek and Roscoe, Timothy and Gandhi, Jayneel},
+	booktitle = ASPLOS20,
+	month = MAR,
+	year = 2020,
+}
+
+@inproceedings{panwar2021vmitosis,
+	title = {{Fast Local Page-Tables for Virtualized NUMA Servers with vMitosis}},
+	author = {Panwar, Ashish and Achermann, Reto and Basu, Arkaprava and Bhattacharjee, Abhishek and Gopinath, K. and Gandhi, Jayneel},
+	booktitle = ASPLOS21,
+	month = APR,
+	year = 2021,
+}
+
+@inproceedings{margaritov2021ptemagnet,
+	title = {{PTEMagnet: Fine-Grained Physical Memory Reservation for Faster Page Walks in Public Clouds}},
+	author = {Margaritov, Artemiy and Ustiugov, Dmitrii and Shahab, Amna and Grot, Boris},
+	booktitle = ASPLOS21,
+	month = APR,
+	year = 2021,
+}
+
+@inproceedings{merrifield2016performance,
+	title = {{Performance Implications of Extended Page Tables on Virtualized x86 Processors}},
+	author = {Merrifield, Timothy and Taheri, H Reza},
+	booktitle = VEE16,
+	month = APR,
+	year = 2016,
+}
+
+@inproceedings{gandhi2016agile,
+	title = {{Agile Paging: Exceeding the Best of Nested and Shadow Paging}},
+	author = {Gandhi, Jayneel and Hill, Mark D and Swift, Michael M},
+	booktitle = ISCA16,
+	month = JUN,
+	year = 2016,
+}
+
+@inproceedings{jovan2022nestedecpt,
+	title = {{Parallel Virtualized Memory Translation with Nested Elastic Cuckoo Page Tables}},
+	author = {Stojkovic, Jovan and Skarlatos, Dimitrios and Kokolis, Apostolos and Xu, Tianyin and Torrellas, Josep},
+	booktitle = ASPLOS22,
+	month = FEB,
+	year = 2022,
+}
+
+@inproceedings{karakostas2015redundant,
+	title = {{Redundant Memory Mappings for Fast Access to Large Memories}},
+	author = {Karakostas, Vasileios and Gandhi, Jayneel and Ayar, Furkan and Cristal, Adri{\'a}n and Hill, Mark D and McKinley, Kathryn S and Nemirovsky, Mario and Swift, Michael M and {\"U}nsal, Osman},
+	booktitle = ISCA15,
+	month = JUN,
+	year = 2015,
+}
+
+@inproceedings{gupta2021midgard,
+	title = {{Rebooting Virtual Memory with Midgard}},
+	author = {Gupta, Siddharth and Bhattacharyya, Atri and Oh, Yunho and Bhattacharjee, Abhishek and Falsafi, Babak and Payer, Mathias},
+	booktitle = ISCA21,
+	month = JUN,
+	year = 2021,
+}
+
+@inproceedings{yaniv2016hash,
+	title = {{Hash, Don't Cache (the Page Table)}},
+	author = {Yaniv, Idan and Tsafrir, Dan},
+	booktitle = {Proceedings of the 2016 ACM SIGMETRICS International Conference on Measurement and Modeling of Computer Systems (SIGMETRICS '16)},
+	month = JUN,
+	year = 2016,
+}
+
+@inproceedings{park2022fpt,
+	title = {{Every Walk's a Hit: Making Page Walks Single-Access Cache Hits}},
+	author = {Park, Chang Hyun and Vougioukas, Ilias and Sandberg, Andreas and Black-Schaffer, David},
+	booktitle = ASPLOS22,
+	year = 2022,
+	month = FEB,
+}
+
+@inproceedings{bhargava2008accelerating,
+	title = {{Accelerating Two-Dimensional Page Walks for Virtualized Systems}},
+	author = {Bhargava, Ravi and Serebrin, Benjamin and Spadini, Francesco and Manne, Srilatha},
+	booktitle = ASPLOS08,
+	month = MAR,
+	year = 2008,
+}
+
+@inproceedings{skarlatos2020ecpt,
+	title = {{Elastic Cuckoo Page Tables: Rethinking Virtual Memory Translation for Parallelism}},
+	author = {Skarlatos, Dimitrios and Kokolis, Apostolos and Xu, Tianyin and Torrellas, Josep},
+	booktitle = ASPLOS20,
+	year = 2020,
+	month = MAR,
+}
+
+@inproceedings{ainsworth2021compendia,
+	title = {{Compendia: Reducing Virtual-Memory Costs via Selective Densification}},
+	author = {Ainsworth, Sam and Jones, Timothy M},
+	booktitle = {Proceedings of the 2021 ACM SIGPLAN International Symposium on Memory Management (ISMM '21)},
+	year = 2021,
+	month = JUN,
+}
+
+@inproceedings{Bergman2022,
+	title = {{Reconsidering OS Memory Optimizations in the Presence of Disaggregated Memory}},
+	author = {Shai Bergman and Priyank Faldu and Boris Grot and Llu\'{i}s Vilanova and Mark Silberstein},
+	booktitle = {Proceedings of the 2022 ACM SIGPLAN International Symposium on Memory Management (ISMM '22)},
+	year = 2022,
+	month = JUN,
+}
+
+@inproceedings{mckinley2016nextgen,
+	author = {McKinley, Kathryn S.},
+	title = {{Next Generation Virtual Memory Management}},
+	booktitle = VEE16,
+	month = MAR,
+	year = 2016,
+}
+
+@inproceedings{ahn2012revisiting,
+	title = {{Revisiting Hardware-Assisted Page Walks for Virtualized Systems}},
+	author = {Ahn, Jeongseob and Jin, Seongwook and Huh, Jaehyuk},
+	booktitle = ISCA12,
+	year = 2012,
+	month = JUN,
+}
+
+@inproceedings{gandhi2014efficient,
+	title = {{Efficient Memory Virtualization: Reducing Dimensionality of Nested Page Walks}},
+	author = {Gandhi, Jayneel and Basu, Arkaprava and Hill, Mark D and Swift, Michael M},
+	booktitle = MICRO14,
+	year = 2014,
+	month = DEC,
+}
+
+@inproceedings{basu2013efficient,
+	title = {{Efficient Virtual Memory for Big Memory Servers}},
+	author = {Basu, Arkaprava and Gandhi, Jayneel and Chang, Jichuan and Hill, Mark D and Swift, Michael M},
+	booktitle = ISCA13,
+	year = 2013,
+	month = JUN,
+}
+
+@inproceedings{stojkovic2023efficient,
+	author = {Stojkovic, Jovan and Mantri, Namrata and Skarlatos, Dimitrios and Xu, Tianyin and Torrellas, Josep},
+	title = {{Memory-Efficient Hashed Page Tables}},
+	booktitle = HPCA23,
+	year = 2023,
+	month = FEB,
+}
+
+@inproceedings{adams2006virtualization,
+	author = {Adams, Keith and Agesen, Ole},
+	title = {{A Comparison of Software and Hardware Techniques for x86 Virtualization}},
+	booktitle = ASPLOS06,
+	year = 2006,
+	month = OCT,
+}
+
+@misc{vmware2009ept,
+	title = {{Performance Evaluation of Intel EPT Hardware Assist}},
+	howpublished = "\url{https://www.vmware.com/pdf/Perf_ESX_Intel-EPT-eval.pdf}",
+	author = {{VMware}},
+	month = MAR,
+	year = 2009,
+}
+
+@inproceedings{yan2019nimble,
+	title = {{Nimble Page Management for Tiered Memory Systems}},
+	author = {Zi Yan and Daniel Lustig and David Nellans and Abhishek Bhattacharjee},
+	booktitle = ASPLOS19,
+	year = 2019,
+	month = APR,
+}
+
+@inproceedings{jovan2023memory,
+	author = {Stojkovic, Jovan and Mantri, Namrata and Skarlatos, Dimitrios and Xu, Tianyin and Torrellas, Josep},
+	title = {{Memory-Efficient Hashed Page Tables}},
+	booktitle = HPCA23,
+	year = 2023,
+	month = FEB,
+}
+
+@inproceedings{suchy2022caratcake,
+	author = {Suchy, Brian and Ghosh, Souradip and Kersnar, Drew and Chai, Siyuan and Huang, Zhen and Nelson, Aaron and Cuevas, Michael and Bernat, Alex and Chaudhary, Gaurav and Hardavellas, Nikos and Campanoni, Simone and Dinda, Peter},
+	title = {{CARAT CAKE: Replacing Paging via Compiler/Kernel Cooperation}},
+	booktitle = ASPLOS22,
+	year = 2022,
+	month = FEB,
+}
+
+@inproceedings{suchy2020carat,
+	author = {Suchy, Brian and Campanoni, Simone and Hardavellas, Nikos and Dinda, Peter},
+	title = {{CARAT: A Case for Virtual Memory through Compiler- and Runtime-Based Address Translation}},
+	booktitle = {Proceedings of the 41st ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI '20)},
+	year = 2020,
+	month = JUN,
+}
+
+@misc{linux:5level-pt,
+	author = {Jonathan Corbet},
+	title = {{Five-level page tables}},
+	howpublished = "\url{https://lwn.net/Articles/717293/}",
+	year = 2017,
+	month = MAR,
+}
+
+@inproceedings{talluri1995pagetable,
+	author = {Madhusudhan Talluri and Mark D. Hill and Yousef A. Khalid},
+	title = {{A New Page Table for 64-bit Address Spaces}},
+	booktitle = SOSP95,
+	year = 1995,
+	month = DEC,
+}
+
+@inproceedings{picorel2017near,
+	title = {{Near-Memory Address Translation}},
+	author = {Picorel, Javier and Jevdjic, Djordje and Falsafi, Babak},
+	booktitle = PACT17,
+	year = 2017,
+	month = SEP,
+}
+
+@inproceedings{kanellopoulos2023utopia,
+	title={{Utopia: Fast and Efficient Address Translation via Hybrid Restrictive \& Flexible Virtual-to-Physical Address Mappings}},
+	author={Kanellopoulos, Konstantinos and Bera, Rahul and Stojiljkovic, Kosta and Bostanci, F. Nisa and Firtina, Can and Ausavarungnirun, Rachata and Kumar, Rakesh and Hajinazar, Nastaran and Sadrosadati, Mohammad and Vijaykumar, Nandita and Mutlu, Onur},
+	booktitle = MICRO23,
+	year = 2023,
+	month = OCT,
+}
+
+@inproceedings{huck1993architectural,
+	title = {{Architectural Support For Translation Table Management In Large Address Space Machines}},
+	author = {Huck, Jerry and Hays, Jim},
+	booktitle = ISCA93,
+	year = 1993,
+	month = MAY,
+}
+
+@article{hoang2010nested,
+	author= {Giang Hoang and Chang Bae and John Lange and Lide Zhang and Peter Dinda and Russ Joseph},
+	title={{A Case for Alternative Nested Paging Models for Virtualized Systems}},
+	journal={IEEE Computer Architecture Letters},
+	volume=9,
+	number=1,
+	pages={17--20},
+	month=JAN,
+	year=2010,
+}
+
+@inproceedings{gosakan2023mosaic,
+	title = {{Mosaic Pages: Big TLB Reach with Small Pages}},
+	author = {Gosakan, Krishnan and Han, Jaehyun and Kuszmaul, William and Mubarek, Ibrahim Nael and Mukherjee, Nirjhar and Sriram, Karthik and Tagliavini, Guido and West, Evan and Bender, Michael A. and Bhattacharjee, Abhishek and Conway, Alex and Farach-Colton, Martin and Gandhi, Jayneel and Johnson, Rob and Kannan, Sudarsun and Porter, Donald E.},
+	booktitle = ASPLOS23,
+	year = 2023,
+	month = MAR,
+}
+
+@inproceedings{alam2017doityourself,
+	author = {Alam, Hanna and Zhang, Tianhao and Erez, Mattan and Etsion, Yoav},
+	title = {{Do-It-Yourself Virtual Memory Translation}},
+	booktitle = ISCA17,
+	year = 2017,
+	month = JUN,
+}
+
+@inproceedings{vmware2021hashing,
+	author = {Bender, Michael A. and Bhattacharjee, Abhishek and Conway, Alex and Farach-Colton, Mart\'{\i}n and Johnson, Rob and Kannan, Sudarsun and Kuszmaul, William and Mukherjee, Nirjhar and Porter, Don and Tagliavini, Guido and Vorobyeva, Janet and West, Evan},
+	title = {{Paging and the Address-Translation Problem}},
+	booktitle = {Proceedings of the 33rd ACM Symposium on Parallelism in Algorithms and Architectures (SPAA '21)},
+	year = 2021,
+	month = JUL,
+}
+
+@inproceedings {peleg2015iommu,
+	author = {Omer Peleg and Adam Morrison and Benjamin Serebrin and Dan Tsafrir},
+	title = {{Utilizing the IOMMU Scalably}},
+	booktitle = ATC15,
+	year = 2015,
+	month = JUL,
+}
+
+@inproceedings {Amit2010,
+	author = {Nadav Amit and Muli Ben-Yehuda and Ben-Ami Yassour},
+	title = {{IOMMU: Strategies for Mitigating the IOTLB Bottleneck}},
+	booktitle = {Proceedings of the 6th Annual Workshorp on the Interaction between Operating Systems and Computer Architecture (WIOSCA '10)},
+	year = 2010,
+	month = JUN,
+}
+
+@inproceedings{hyun2020neummu,
+	author = {Hyun, Bongjoon and Kwon, Youngeun and Choi, Yujeong and Kim, John and Rhu, Minsoo},
+	title = {{NeuMMU: Architectural Support for Efficient Address Translations in Neural Processing Units}},
+	booktitle = ASPLOS20,
+	year = 2020,
+	month = MAR,
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+## MEMORY MANAGEMENT
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@misc{linux:mm,
+	howpublished = "\url{https://www.kernel.org/doc/html/v5.15/x86/x86_64/mm.html}",
+	title = {{Memory Management}},
+	month = AUG,
+	year = 2021,
+}
+
+@misc{linux:5levelimpl,
+	author = {Kirill A. Shutemov},
+	title = {{mm: convert generic code to 5-level paging}},
+	howpublished = "\url{https://github.com/torvalds/linux/commit/c2febafc67734a62196c1b9dfba926412d4077ba}",
+	year = 2017,
+	month = MAR,
+}
+
+@misc{freebsd:pmap,
+	howpublished = "\url{https://github.com/freebsd/freebsd-src/blob/release/14.0.0/sys/vm/pmap.h}",
+	title = {{Machine address mapping definitions -- machine-independent section}},
+	year = 2023,
+	month = AUG,
+}
+
+@misc{linux:torvalds_pt,
+	author = {Linus Torvalds},
+	title = {{Re: [Lse-tech] Re: 10.31 second kernel compile}},
+	howpublished = {\url{https://yarchive.net/comp/linux/page_tables.html}},
+	year = 2002,
+	month = MAR,
+}
+
+@inproceedings{young1987duality,
+	title = {{The Duality of Memory and Communication in the Implementation of a Multiprocessor Operating System}},
+	author = {Young, Michael and Tevanian, Avadis and Rashid, Richard and Golub, David and Eppinger, Jeffrey},
+	booktitle = SOSP87,
+	month = NOV,
+	year = 1987,
+}
+
+@inproceedings{tabatabai2023fbmm,
+	author = {Bijan Tabatabai and Mark Mansi and Michael M. Swift},
+	title = {{FBMM: Using the VFS for Extensibility in Kernel Memory Management}},
+	booktitle = HotOS23,
+	year = 2023,
+	month = JUN,
+}
+
+@techreport{small1994vino,
+	title = {{VINO: An Integrated Platform for Operating System and Database Research}},
+	author = {Small, Christopher A and Seltzer, Margo I},
+	institution = {Harvard University},
+	number = {TR-30-94},
+	month = OCT,
+	year = 1994,
+}
+
+@inproceedings{rashid1987machine,
+	title = {{Machine-Independent Virtual Memory Management for Paged Uniprocessor and Multiprocessor Architectures}},
+	author = {Rashid, Richard and Tevanian, Avadis and Young, Michael and Golub, David and Baron, Robert and Black, David and Bolosky, William and Chew, Jonathan},
+	booktitle = ASPLOS87,
+	year = 1987,
+	month = OCT,
+}
+
+@inproceedings{anderson91mach,
+	title = {{The Interaction of Architecture and Operating System Design}},
+	author = {Anderson, Thomas E. and Levy, Henry M. and Bershad, Brian N. and Lazowska, Edward D.},
+	booktitle = ASPLOS91,
+	year = 1991,
+	month = APR,
+}
+
+@inproceedings{appel91primitives,
+	title = {{Virtual Memory Primitives for User Programs}},
+	author = {Appel, Andrew W. and Li, Kai},
+	booktitle = ASPLOS91,
+	year = 1991,
+	month = APR,
+}
+
+@article{levy82virtual,
+	author= {Henry M. Levy and Peter H. Lipman},
+	title = {{Virtual Memory Management in the VAX/VMS Operating System}},
+	journal = {IEEE Computer},
+	volume = 15,
+	number = 3,
+	pages = {35--41},
+	month = MAR,
+	year = 1982,
+}
+
+@inproceedings{krueger1993tools,
+	title = {{Tools for the Development of Application Specific Virtual Memory Management}},
+	author = {Krueger, Keith and Loftesness, David and Vahdat, Amin and Anderson, Thomas},
+	booktitle = {Proceedings of the Eighth Annual Conference on Object-Oriented Programming Systems, Languages, and Applications (OOPSLA '93)},
+	year = 1993,
+	month = SEP,
+}
+
+@inproceedings{huang16mmstudy,
+	title = {{An Evolutionary Study of Linux Memory Management for Fun and Profit}},
+	author = {Jian Huang and Moinuddin K. Qureshi and Karsten Schwan},
+	booktitle = ATC16,
+	year = 2016,
+	month = JUN,
+}
+
+@inproceedings{Gray05,
+	title = {{Itanium -- A System Implementor's Tale}},
+	author = {Charles Gray and Matthew Chapman and Peter Chubb and David Mosberger-Tang and Gernot Heiser},
+	booktitle = ATC05,
+	year = 2005,
+	month = APR,
+}
+
+@inproceedings{gingell1987sunos,
+	title = {{Virtual Memory Architecture in SunOS}},
+	author = {Robert A. Gingell and Joseph P. Moran and William A. Shannon},
+	booktitle = ATC87s,
+	year = 1987,
+	month = JUN,
+}
+
+@inproceedings{engler1995avm,
+	author = {Dawson R. Engler and Sandeep K. Gupta and M. Frans Kaashoek},
+	title = {{AVM: Application-Level Virtual Memory}},
+	booktitle = HotOS95,
+	year = 1995,
+	month = MAY,
+}
+
+@inproceedings{cranor99uvm,
+	title = {{The UVM Virtual Memory System}},
+	author = {Charles D. Cranor and Gurudatta M. Parulkar},
+	booktitle = ATC99,
+	year = 1999,
+	month = JUN,
+}
+
+@inproceedings{bershad1995extensibility,
+	title = {{Extensibility, Safety and Performance in the SPIN Operating System}},
+	author = {Bershad, Brian N and Savage, Stefan and Pardyak, Przemyslaw and Sirer, Emin G{\"u}n and Fiuczynski, Marc E and Becker, David and Chambers, Craig and Eggers, Susan},
+	booktitle = SOSP95,
+	year = 1995,
+	month = DEC,
+}
+
+@inproceedings{accetta1986mach,
+	title={{Mach: A New Kernel Foundation For UNIX Development}},
+	author={Accetta, Mike and Baron, Robert and Bolosky, William and Golub, David and Rashid, Richard and Tevanian, Avadis and Young, Michael},
+	booktitle = ATC86s,
+	year = 1986,
+	month = JUL,
+}
+
+@inproceedings{abrossimov1989generic,
+	title = {{Generic Virtual Memory Management for Operating System Kernels}},
+	author = {Abrossimov, E and Rozier, Marc and Shapiro, Marc},
+	booktitle = SOSP89,
+	year = 1989,
+	month = NOV,
+}
+
+@inproceedings{maruf2023tpp,
+	author = {Maruf, Hasan Al and Wang, Hao and Dhanotia, Abhishek and Weiner, Johannes and Agarwal, Niket and Bhattacharya, Pallab and Petersen, Chris and Chowdhury, Mosharaf and Kanaujia, Shobhit and Chauhan, Prakash},
+	title = {{TPP: Transparent Page Placement for CXL-Enabled Tiered-Memory}},
+	booktitle = ASPLOS23,
+	year = 2023,
+	month = MAR,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+## MEMORY OTHER
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@inproceedings{ferdman2012clearing,
+	author = {Ferdman, Michael and Adileh, Almutaz and Kocberber, Onur and Volos, Stavros and Alisafaee, Mohammad and Jevdjic, Djordje and Kaynak, Cansu and Popescu, Adrian Daniel and Ailamaki, Anastasia and Falsafi, Babak},
+	title = {{Clearing the Clouds: A Study of Emerging Scale-out Workloads on Modern Hardware}},
+	booktitle = ASPLOS12,
+	month = MAR,
+	year = 2012,
+}
+
+@inproceedings{guo2017smartmd,
+	title = {{SmartMD: A High Performance Deduplication Engine with Mixed Pages}},
+	author = {Guo, Fan and Li, Yongkun and Xu, Yinlong and Jiang, Song and Lui, John CS},
+	booktitle = ATC17,
+	month = JUL,
+	year = 2017,
+}
+
+@misc{linux:kpti,
+	title = {{Page Table Isolation (PTI)}},
+	howpublished = "\url{https://www.kernel.org/doc/html/next/x86/pti.html}",
+	month = JAN,
+	year = 2024,
+}
+
+@article{sharma2023cxl,
+	author = {Debendra Das Sharma},
+	title = {{Compute Express Link (CXL): Enabling Heterogeneous Data-Centric Computing With Heterogeneous Memory Hierarchy}},
+	journal = {IEEE Micro},
+	volume = 43,
+	number = 2,
+	pages = {99--109},
+	month = MAR,
+	year = 2023,
+}
+
+@inproceedings{li2023pond,
+	title = {{Pond: CXL-Based Memory Pooling Systems for Cloud Platforms}},
+	author = {Li, Huaicheng and Berger, Daniel S. and Hsu, Lisa and Ernst, Daniel and Zardoshti, Pantea and Novakovic, Stanko and Shah, Monish and Rajadnya, Samir and Lee, Scott and Agarwal, Ishwar and Hill, Mark D. and Fontoura, Marcus and Bianchini, Ricardo},
+	booktitle = ASPLOS23,
+	year = 2023,
+	month = MAR,
+}
+
+@article{ghose2019pim,
+	author = {S. Ghose and A. Boroumand and J. S. Kim and J. G\'{o}mez-Luna and O. Mutlu},
+	title = {{Processing-in-memory: A workload-driven perspective}},
+	journal = {IBM Journal of Research and Development},
+	volume = 63,
+	number = 6,
+	pages = {3:1-3:19},
+	month = AUG,
+	year = 2019,
+}
+
+@article{Bender2023,
+	author = {Michael A. Bender and Alex Conway and Mart\'{i}n Farach-Colton and 
+		William Kuszmaul and Guido Tagliavini},
+	title = {{Iceberg Hashing: Optimizing Many Hash-Table Criteria at Once}},
+	journal = {Journal of the ACM},
+	volume = 70,
+	number = 6,
+	pages = {1--55},
+	month = NOV,
+	year = 2023,
+}
+
+@article{pagh2004cuckoo,
+	author = {Pagh, Rasmus and Rodler, Flemming Friche},
+	title = {{Cuckoo Hashing}},
+	year = 2004,
+	month = MAY,
+	journal = {Journal of Algorithms},
+	volume = 51,
+	number = 2,
+	pages = {122--144},
+}
+
+@article{bender2023iceberg,
+	title = {{Iceberg Hashing: Optimizing Many Hash-Table Criteria at Once}},
+	author = {Bender, Michael A and Conway, Alex and Farach-Colton, Mart{\'\i}n and Kuszmaul, William and Tagliavini, Guido},
+	year = 2023,
+	month = NOV,
+	journal = {Journal of the ACM},
+	volume = 70,
+	number = 6,
+	pages = {1--51},
+}
+
+@misc{linux:sptl,
+	title = {{Split page table lock}},
+	howpublished = "\url{https://www.kernel.org/doc/html/next/mm/split_page_table_lock.html}",
+	month = AUG,
+	year = 2023,
+}
+
+@misc{linux:migration,
+	title = {{Page migration}},
+	howpublished = "\url{https://www.kernel.org/doc/html/next/mm/page_migration.html}",
+	month = AUG,
+	year = 2023,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+## FILE SYSTEM
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@misc{linux:vfs,
+	author = {Richard Gooch and Pekka Enberg},
+	title = {{Overview of the Linux Virtual File System}},
+	howpublished = "\url{https://www.kernel.org/doc/html/next/filesystems/vfs.html}",
+	month = FEB,
+	year = 2024,
+}
+
+@inproceedings{kadekodi2021winefs,
+	title = {{WineFS: a hugepage-aware file system for persistent memory that ages gracefully}},
+	author = {Kadekodi, Rohan and Kadekodi, Saurabh and Ponnapalli, Soujanya and Shirwadkar, Harshad and Ganger, Gregory R and Kolli, Aasheesh and Chidambaram, Vijay},
+	booktitle = SOSP21,
+	month = OCT,
+	year = 2021,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+## DATABASE
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@book{james83crud,
+	author = {Martin, James},
+	title = {{Managing the Data-base Environment}},
+	year = {1983},
+	publisher = {Prentice-Hall},
+}
+
+@inproceedings{brodie1989crud,
+	title = {{On the Design and Specification of Database Transactions}},
+	author = {Michael Brodie and Dzenan Ridjanovic},
+	booktitle = {Readings in Artificial Intelligence and Databases},
+	year = 1988,
+	month = JAN
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+## BENCHMARK, PLATFORM AND TOOLS
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@inproceedings{bench:lmbench,
+	author = {Larry McVoy and Carl Staelin},
+	title = {{lmbench: Portable Tools for Performance Analysis}},
+	booktitle = ATC96,
+	month = JUN,
+	year = 1996,
+}
+
+@techreport{bench:sphinx,
+	title = {{Sphinx-4: A Flexible Open Source Framework for Speech Recognition}},
+	author = {Walker, Willie and Lamere, Paul and Kwok, Philip and Raj, Bhiksha and Singh, Rita and Gouvea, Evandro and Wolf, Peter and Woelfel, Joe},
+	institution = {Sun Microsystems},
+	number = {SMLI TR2004-0811},
+	month = DEC,
+	year = 2004,
+}
+
+@inproceedings{bench:moses,
+	title = {{Moses: Open Source Toolkit for Statistical Machine Translation}},
+	author = {Koehn, Philipp and Hoang, Hieu and Birch, Alexandra and Callison-Burch, Chris and Federico, Marcello and Bertoldi, Nicola and Cowan, Brooke and Shen, Wade and Moran, Christine and Zens, Richard and others},
+	booktitle = {Proceedings of the 45th Annual Meeting of the Association for Computational Linguistics Companion Volume Proceedings of the Demo and Poster Sessions (ACL 2007)},
+	month = JUN,
+	year = 2007,
+}
+
+@misc{bench:sepcjbb,
+	title = {{SPECjbb® 2015}},
+	howpublished = "\url{https://www.spec.org/jbb2015/}",
+	year = 2024,
+	month = APR,
+	author = {{Standard Performance Evaluation Corporation}},
+}
+
+@inproceedings{bench:shore,
+	title = {{Shore-MT: A Scalable Storage Manager for the Multicore Era}},
+	author = {Johnson, Ryan and Pandis, Ippokratis and Hardavellas, Nikos and Ailamaki, Anastasia and Falsafi, Babak},
+	booktitle = {Proceedings of the 12th International Conference on Extending Database Technology: Advances in Database Technology (EDBT '09)},
+	month = MAR,
+	year = 2009,
+}
+
+@misc{bench:redis,
+	title = {{Redis}},
+	howpublished = "\url{http://redis.io/}",
+	month = APR,
+	year = 2023,
+	author = {{Redis}},
+}
+
+@misc{bench:memcached,
+	title = {{memcached - a distributed memory object caching system}},
+	howpublished = "\url{https://memcached.org}",
+	month = APR,
+	year = 2023,
+	author = {{Memcached}},
+}
+
+@techreport{bench:parsec,
+	title = {{The PARSEC Benchmark Suite: Characterization and Architectural Implications}},
+	author = {Christian Bienia and Sanjeev Kumar and Jaswinder Pal Singh and Kai Li},
+	institution = {Princeton University},
+	number = {TR-811-08},
+	month = JAN,
+	year = 2008,
+}
+
+@misc{bench:gups,
+	howpublished = "\url{https://hpcchallenge.org/projectsfiles/hpcc/RandomAccess.html}",
+	title = {{RandomAccess: GUPS (Giga Updates Per Second)}},
+	month = AUG,
+	year = 2022,
+	author = {{HPC Challenge Benchmark}},
+}
+
+@inproceedings{bench:xsbench,
+	author = {Tramm, John R and Siegel, Andrew R and Islam, Tanzima and Schulz, Martin},
+	title = {{XSBench - The Development and Verification of a Performance Abstraction for Monte Carlo Reactor Analysis}},
+	booktitle = {{Proceedings of the International Conference on Physics of Reactors (PHYSOR 2014)}},
+	year = 2014,
+	month = SEP,
+}
+
+@inproceedings{zhou2013cuckooswitch,
+	author = {Dong Zhou and Bin Fan and Hyeontaek Lim and Michael Kaminsky and David G. Andersen},
+	title = {{Scalable, High Performance Ethernet Forwarding with CuckooSwitch}},
+	booktitle = {{Proceedings of the 9th ACM Conference on Emerging Networking Experiments and Technologies (CoNEXT '13)}},
+	year = 2013,
+	month = DEC,
+}
+
+@inproceedings{bench:hpcc,
+	title = {{The HPC Challenge (HPCC) Benchmark Suite}},
+	author = {Luszczek, Piotr R and Bailey, David H and Dongarra, Jack J and Kepner, Jeremy and Lucas, Robert F and Rabenseifner, Rolf and Takahashi, Daisuke},
+	booktitle = SC06,
+	month = NOV,
+	year = 2006,
+}
+
+@misc{bench:btree,
+	howpublished = "\url{https://github.com/mitosis-project/mitosis-workload-btree}",
+	title = {{Mitosis Workload Btree}},
+	author = {{Mitosis Project}},
+	month = JUL,
+	year = 2020,
+}
+
+@misc{bench:graph500,
+	howpublished = "\url{https://graph500.org/?page_id=12}",
+	title = {{Graph 500 Benchmark Specification}},
+	author = {{Graph 500 Steering Committee}},
+	month = JUN,
+	year = 2017,
+}
+
+@misc{bench:ycsb,
+	howpublished = "\url{https://github.com/brianfrankcooper/YCSB}",
+	title = {{Yahoo! Cloud Serving Benchmark}},
+	author = {{Yahoo!}},
+	month = OCT,
+	year = 2019,
+}
+
+@inproceedings{bench:masstree,
+	title = {{Cache Craftiness for Fast Multicore Key-Value Storage}},
+	author = {Mao, Yandong and Kohler, Eddie and Morris, Robert Tappan},
+	booktitle = EuroSys12,
+	month = APR,
+	year = 2012,
+}
+
+@misc{bench:sysbench,
+	title = {{SysBench: Scriptable database and system performance benchmark}},
+	howpublished="\url{https://github.com/akopytov/sysbench/tree/1.0.20}",
+	author = {Alexey Kopytov},
+	month = APR,
+	year = 2020,
+}
+
+@inproceedings{bench:lebench,
+	author = {Ren, Xiang (Jenny) and Rodrigues, Kirk and Chen, Luyuan and Vega, Camilo and Stumm, Michael and Yuan, Ding},
+	title = {{An Analysis of Performance Evolution of Linux's Core Operations}},
+	booktitle = SOSP19,
+	year = 2019,
+	month = OCT,
+}
+
+@inproceedings{bench:graphbig,
+	author = {Nai, Lifeng and Xia, Yinglong and Tanase, Ilie G. and Kim, Hyesoon and Lin, Ching-Yung},
+	title = {{GraphBIG: Understanding Graph Computing in the Context of Industrial Solutions}},
+	booktitle = SC15,
+	year = 2015,
+	month = NOV,
+}
+
+@misc{bench:graphbig-LDBC,
+	title = {{GraphBIG Dataset}},
+	howpublished = "\url{https://github.com/graphbig/graphBIG/wiki/GraphBIG-Dataset}",
+	month = Mar,
+	year = 2015,
+}
+
+@misc{plat:qemu,
+	title = {{QEMU: A generic and open source machine emulator and virtualizer}},
+	howpublished = "\url{http://www.qemu.org}",
+	month = JUN,
+	year = 2020,
+}
+
+@misc{plat:qemu:softmmu,
+	title = {{Features/SoftMMU}},
+	howpublished = "\url{https://wiki.qemu.org/Features/SoftMMU}",
+	month = JAN,
+	year = 2018,
+}
+
+@misc{plat:qemu:tcgplugin,
+	title = {{QEMU TCG Plugins}},
+	howpublished = "\url{https://www.qemu.org/docs/master/devel/tcg-plugins.html}",
+	month = FEB,
+	year = 2024,
+}
+
+@phdthesis{plat:dynamorio,
+	author = {Bruening, Derek L.},
+	title = {{Efficient, Transparent, and Comprehensive Runtime Code Manipulation}},
+	year = 2004,
+	month = SEP,
+	school = {Massachusetts Institute of Technology},
+}
+
+@article{plat:gem5,
+	author = {Binkert, Nathan and Beckmann, Bradford and Black, Gabriel and Reinhardt, Steven K. and Saidi, Ali and Basu, Arkaprava and Hestness, Joel and Hower, Derek R. and Krishna, Tushar and Sardashti, Somayeh and Sen, Rathijit and Sewell, Korey and Shoaib, Muhammad and Vaish, Nilay and Hill, Mark D. and Wood, David A.},
+	title = {{The gem5 Simulator}},
+	year = 2011,
+	month = AUG,
+	journal = {ACM SIGARCH Computer Architecture News},
+	volume = 39,
+	number = 2,
+	pages = {1--7},
+}
+
+@article{plat:sst,
+	author = {Rodrigues, Arun and Hemmert, K. Scott and Barrett, Brian W. and Kersey, Chad and Oldfield, Ron and Weston, Marlo and Riesen, Rolf and Cook, Jeanine and Rosenfeld, Paul and Cooper-Balis, Elliot and Jacob, Bruce},
+	title = {{The Structural Simulation Toolkit}},
+	month = MAR,
+	year = 2011,
+	journal = {ACM SIGMETRICS Performance Evaluation Review},
+	volume = 38,
+	number = 4,
+	pages = {37--42},
+}
+
+@article{plat:simics,
+	author = {Magnusson, P.S. and Christensson, M. and Eskilson, J. and Forsgren, D. and Hallberg, G. and Hogberg, J. and Larsson, F. and Moestedt, A. and Werner, B.},
+	title = {{Simics: A Full System Simulation Platform}},
+	journal = {IEEE Computer},
+	year = 2002,
+	month = FEB,
+	volume = 35,
+	number = 2,
+	pages = {50--58},
+}
+
+@misc{tool:flamegraph,
+	author = {Brendan Gregg},
+	title = {{CPU Flame Graphs}},
+	howpublished = "\url{https://www.brendangregg.com/FlameGraphs/cpuflamegraphs.html}",
+	month = AUG,
+	year = 2021,
+}
+
+@misc{tool:ltp,
+	title = {{Linux Test Project}},
+	howpublished = "\url{https://github.com/linux-test-project/ltp/tree/20230929}",
+	month = SEP,
+	year = 2023,
+}
+
+@misc{tool:clang:query,
+	title = {{clang-query tool}},
+	howpublished = "\url{https://github.com/llvm/llvm-project/tree/main/clang-tools-extra/clang-query}",
+	month = JAN,
+	year = 2024,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+## NEWS / REPORTS
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@misc{news:aws:18tb,
+	author = {Jeff Barr},
+	title = {{EC2 High Memory Update - New 18 TB and 24 TB Instances}},
+	howpublished = "\url{https://aws.amazon.com/blogs/aws/ec2-high-memory-update-new-18-tb-and-24-tb-instances/}",
+	month = OCT,
+	year = 2019,
+}
+
+@misc{news:gcloud:12tb,
+	author = {{Google Cloud}},
+	title = {{Memory-optimized machine family for Compute Engine}},
+	howpublished = "\url{https://cloud.google.com/compute/docs/memory-optimized-machines}",
+	month = APR,
+	year = 2024,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+## DISCARDABLE
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@misc{linux:head64s,
+	title = {{arch/x86/boot/compressed/head\_64.S}},
+	howpublished = "\url{https://github.com/torvalds/linux/blob/v5.15/arch/x86/boot/compressed/head_64.S}",
+	year = 2021,
+	month = AUG,
+}
+
+@misc{linux:head64c,
+	howpublished = "\url{https://github.com/torvalds/linux/blob/v5.15/arch/x86/kernel/head64.c}",
+	title = {{arch/x86/kernel/head64.c}},
+	year = 2021,
+	month = MAY,
+}
+
+@misc{linux:cpucommon,
+	howpublished = "\url{https://github.com/torvalds/linux/blob/v5.15/arch/x86/kernel/cpu/common.c}",
+	title = {{arch/x86/kernel/cpu/common.c}},
+	year = 2021,
+	month = OCT,
+}
+
+@misc{linux:pagewalk,
+	title = {{mm/pagewalk.c}},
+	howpublished = "\url{https://github.com/torvalds/linux/blob/v5.15/mm/pagewalk.c}",
+	month = JUN,
+	year = 2021,
+}
