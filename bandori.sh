@@ -179,7 +179,7 @@ function color_name_to_code
 # Function that output the given text with given color code
 # This function uses tput and printf as the backend
 # Arguments:
-#   $1: name or code of the color
+#   $1: name or code of the color, leave empty to use default color
 #   $2...: printf format string and parameters
 function clrs
 {
@@ -189,7 +189,11 @@ function clrs
 	local fmt="$1"
 	shift
 
-	printf "$(tput setaf "$(color_name_to_code "$cname")")$fmt$(tput sgr0)" "$@"
+	if [ -n "$cname" ]; then
+		printf "$(tput setaf "$(color_name_to_code "$cname")")$fmt$(tput sgr0)" "$@"
+	else
+		printf "$fmt" "$@"
+	fi
 }
 
 # Internal use only. Print a formatted timestamp
@@ -251,14 +255,200 @@ function pr_succ
 #   $1...: printf format string and parameters
 function pr
 {
+	pr_core "" "$@"
+}
+
+# Internal use only. Print a formatted message and ask for user input
+function ask_core
+{
+	local color="$1"
+	shift
+
+	local regex="$1"
+	shift
+
+	local -n outvar=$1
+	shift
+
 	local fmt="$1"
 	shift
 
-	if [ -n "${BANDORI_CLEAN_PR:-}" ]; then
-		printf "%s $fmt\n" "$(pr_timestamp)" "$@"
-	else
-		printf "%s $fmt (%s)\n" "$(pr_timestamp)" "$@" "$(get_caller 1)"
-	fi
+	local input=""
+	local output=""
+	local prog=""
+	local msg="Please give an input with the format: /^$regex$$/"
+
+	while true; do
+		if [ -n "${BANDORI_CLEAN_PR:-}" ]; then
+			clrs "$color" "%s $fmt:" "$(pr_timestamp)" "$@"
+		else
+			clrs "$color" "%s $fmt (%s):" "$(pr_timestamp)" "$@" "$(get_caller 1)"
+		fi
+
+		# The whitespace is to prevent empty line assumption that may kill the prompt
+		read -rep ' ' input
+
+		case "$regex" in
+
+		# Handling for yes/no/cancel selection
+		yn|Yn|yN|ync|Ync|yNc|ynC)
+			if [[ "$regex" == *"c"* ]] || [[ "$regex" == *"C"* ]]; then
+				prog='print uc("$+{a}") if /^(?:(?<a>[yY])(?:es)?|(?<a>[nN])(?:o)?|(?<a>[cC])(?:ancel|ancle)?)$/'
+				msg="Please choose between Yes/No/Cancel"
+			else
+				prog='print uc("$+{a}") if /^(?:(?<a>[yY])(?:es)?|(?<a>[nN])(?:o)?)$/'
+				msg="Please choose between Yes/No"
+			fi
+
+			output=$(echo "$input" | perl -ne "$prog")
+
+			# Found input
+			if [ -n "$output" ]; then
+				outvar="$output"
+				return 0
+			fi
+
+			# Handle default case
+			if [ -z "$input" ]; then
+				if [[ "$regex" = *"Y"* ]]; then
+					outvar="Y"
+					return 0
+				elif [[ "$regex" = *"N"* ]]; then
+					outvar="N"
+					return 0
+				elif [[ "$regex" = *"C"* ]]; then
+					outvar="C"
+					return 0
+				fi
+			fi
+			;;
+
+		# Handling for decimal input
+		num|dec)
+			output=$(echo "$input" | perl -ne 'print "$1" if /^(\d+)$/')
+			msg="Please input a valid decimal number"
+
+			# Found input
+			if [ -n "$output" ]; then
+				outvar="$output"
+				return 0
+			fi
+			;;
+
+		# Handling for hexadecimal input
+		hex)
+			output=$(echo "$input" | perl -ne 'print uc("$+{a}") if /^(?:(?:0x|0X)?(?<a>[0-9a-fA-F]+)|(?<a>[0-9a-fA-F]+)[hH]?)$/')
+			msg="Please input a valid hexadecimal number"
+
+			# Found input
+			if [ -n "$output" ]; then
+				outvar="$output"
+				return 0
+			fi
+			;;
+
+		# Handling for path input
+		path|epath|fpath|dpath|npath)
+			msg="Please input a valid path"
+
+			# Found input
+			if [ "$regex" = "epath" ]; then
+				msg="Please input a valid existing path"
+				if [ -e "$input" ]; then
+					outvar="$output"
+					return 0
+				fi
+			elif [ "$regex" = "fpath" ]; then
+				msg="Please input a valid file path"
+				if [ -f "$input" ]; then
+					outvar="$output"
+					return 0
+				fi
+			elif [ "$regex" = "dpath" ]; then
+				msg="Please input a valid directory path"
+				if [ -d "$input" ]; then
+					outvar="$output"
+					return 0
+				fi
+			elif [ "$regex" = "npath" ]; then
+				msg="Please input a valid non-existing path"
+				if [ ! -e "$input" ]; then
+					outvar="$output"
+					return 0
+				fi
+			else
+				outvar="$output"
+				return 0
+			fi
+			;;
+
+		# Handling for regex input
+		*)
+			output=$(echo "$input" | perl -ne 'print ((defined $+{"out"}) ? $+{"out"} : $_) if /^'"$regex"'$/')
+			msg="Please give an input with the format: /^$regex$$/"
+
+			# Found input
+			if [ -n "$output" ]; then
+				outvar="$output"
+				return 0
+			fi
+			;;
+
+		esac
+
+		# Handle wild input
+		clrs err "%s     %s\n" "$(pr_timestamp)" "$msg"
+	done
+}
+
+# Print an error message and ask for user input
+# Arguments:
+#   $1: user input validation regex or one of the predefined patterns
+#   $2: the variable holding the output value
+#   $3...: printf format string and parameters
+function ask_err
+{
+	ask_core err "$@"
+}
+
+# Print a warning message and ask for user input
+# Arguments:
+#   $1: user input validation regex or one of the predefined patterns
+#   $2: the variable holding the output value
+#   $3...: printf format string and parameters
+function ask_warn
+{
+	ask_core warn "$@"
+}
+
+# Print an info message and ask for user input
+# Arguments:
+#   $1: user input validation regex or one of the predefined patterns
+#   $2: the variable holding the output value
+#   $3...: printf format string and parameters
+function ask_info
+{
+	ask_core info "$@"
+}
+
+# Print a success message and ask for user input
+# Arguments:
+#   $1: user input validation regex or one of the predefined patterns
+#   $2: the variable holding the output value
+#   $3...: printf format string and parameters
+function ask_succ
+{
+	ask_core succ "$@"
+}
+
+# Print a message and ask for user input
+# Arguments:
+#   $1: user input validation regex or one of the predefined patterns
+#   $2: the variable holding the output value
+#   $3...: printf format string and parameters
+function ask
+{
+	ask_core "" "$@"
 }
 
 
