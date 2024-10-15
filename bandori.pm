@@ -13,6 +13,7 @@ use warnings;
 use Cwd qw(getcwd cwd abs_path);
 use File::Basename;
 use File::Spec;
+use IPC::Open3;
 
 require Exporter;
 
@@ -33,6 +34,7 @@ our @EXPORT = qw(
 	getRealPath
 
 	streamReadToEnd
+	invokeProcess
 );
 
 our $VERSION = '0.01';
@@ -167,4 +169,36 @@ sub streamReadToEnd
 
 	my $text = do { local $/; <$fd> };
 	return $text;
+}
+
+#
+# Process Operations
+#
+
+sub invokeProcess
+{
+	my ($interactive, @args) = @_;
+
+	my $retc = 0;
+	my @stdout;
+	my @stderr;
+
+	unless ($interactive) {
+		my $pid = open3(undef, \*SUB_OUT, \*SUB_ERR, @args);
+		return (1, [], []) if (!$pid);
+
+		waitpid($pid, 0);
+		$retc = $?;
+
+		chomp(@stdout = <SUB_OUT>);
+		chomp(@stderr = <SUB_ERR>);
+
+		close(SUB_OUT);
+		close(SUB_ERR);
+	}
+	else {
+		$retc = system(@args);
+	}
+
+	return ($retc >> 8, \@stdout, \@stderr);
 }
