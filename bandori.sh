@@ -30,6 +30,9 @@ BANDORI_REINIT (default: unset)
 
 BANDORI_CLEAN_PR (default: unset)
 	When set and not empty, do not print caller location for pr_* macros.
+
+BANDORI_GRACE_EXIT (default: unset)
+	When set and not empty, do not treat non-zero return code as error.
 END
 
 
@@ -581,7 +584,7 @@ function sig_err
 {
 	local retval="$1"
 
-	if [ "$retval" -ne 0 ]; then
+	if [ "$retval" -ne 0 ] && [ -z "${BANDORI_GRACE_EXIT:-}" ]; then
 		# We use a file to build a monolithic stack trace when scripts nests
 		get_stacktrace 1 >> "$BANDORI_SCRIPT_TRACE"
 

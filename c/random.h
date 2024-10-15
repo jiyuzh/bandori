@@ -95,7 +95,7 @@ typedef struct prng_state {
 } prng_state;
 
 mut __thread prng_state ___global_prng_state = { 0 };
-mut __thread prng_state *__global_prng_state = NULL;
+mut __thread prng_state *__global_prng_state = (prng_state *) NULL;
 
 // Check if a random state is valid.
 fn bool prng_valid(prng_state *state)
