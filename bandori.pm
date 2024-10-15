@@ -14,6 +14,7 @@ use Cwd qw(getcwd cwd abs_path);
 use File::Basename;
 use File::Spec;
 use IPC::Open3;
+use JSON::PP;
 
 require Exporter;
 
@@ -34,7 +35,15 @@ our @EXPORT = qw(
 	getRealPath
 
 	streamReadToEnd
+
 	invokeProcess
+
+	trim
+	trimStart
+	trimEnd
+
+	deserializeObjectJson
+	serializeObjectJson
 );
 
 our $VERSION = '0.01';
@@ -202,3 +211,54 @@ sub invokeProcess
 
 	return ($retc >> 8, \@stdout, \@stderr);
 }
+
+#
+# String Operations
+#
+
+sub trim
+{
+	my ($str) = @_;
+
+	$str =~ s/^\s+|\s+$//;
+
+	return $str;
+}
+
+sub trimStart
+{
+	my ($str) = @_;
+
+	$str =~ s/^\s+//;
+
+	return $str;
+}
+
+sub trimEnd
+{
+	my ($str) = @_;
+
+	$str =~ s/\s+$//;
+
+	return $str;
+}
+
+#
+# Json Operations
+#
+
+sub deserializeObjectJson
+{
+	my ($json) = @_;
+
+	return JSON::PP->new->pretty(1)->utf8->decode($json);
+}
+
+sub serializeObjectJson
+{
+	my ($data) = @_;
+
+	return JSON::PP->new->pretty(1)->utf8->encode($data);
+}
+
+
