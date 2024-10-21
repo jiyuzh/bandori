@@ -192,7 +192,7 @@ function clrs
 	local fmt="$1"
 	shift
 
-	if [ -n "$cname" ]; then
+	if [ -n "${TERM:-}" ] && [ "${TERM:-}" != "dumb" ] && [ -n "$cname" ]; then
 		printf "$(tput setaf "$(color_name_to_code "$cname")")$fmt$(tput sgr0)" "$@"
 	else
 		printf "$fmt" "$@"
